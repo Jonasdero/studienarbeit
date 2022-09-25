@@ -1,3 +1,4 @@
+% !TeX root = thesis.tex
 \documentclass[
     11pt,
     a4paper,
@@ -29,7 +30,7 @@
 \newcommand{\unternehmen}{Musterfirma GmbH}
 \newcommand{\logo}{figures/TH-Nuernberg-RGB.png}
 \newcommand{\keywords}{hot, fuzz}
- 
+
 
 % custom head and foot
 \usepackage[automark]{scrlayer-scrpage}
@@ -37,7 +38,7 @@
 \ihead{\headmark}
 \chead{}
 \ohead{\pagemark}
-\renewcommand*\chaptermarkformat{\chapappifchapterprefix{\ }% 
+\renewcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
   \thechapter.\enskip}
 
 \RedeclareSectionCommand[tocindent=0pt]{section}
@@ -50,12 +51,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,relsize,textcomp,csquotes}
-\usepackage{amsmath,amsfonts}
-\usepackage[ngerman,english]{babel}  % flip for German thesis
+\usepackage{amsfonts}
+\usepackage[english,ngerman]{babel}  % flip for German thesis
 \usepackage[final]{graphicx}
 \usepackage{setspace,geometry,xcolor}
 \usepackage{makeidx}
-\usepackage{paralist,ifthen,todonotes}
 \usepackage{url}
 \usepackage[toc]{glossaries}
 \usepackage{pdfpages}
@@ -90,26 +90,13 @@
     linktocpage=true,
 ]{hyperref}
 
-
-% configure your listings style
-\usepackage{listings}
-\lstset{
-	tabsize=3,
-	extendedchars=true,
-	frame=single,
-	showstringspaces=true,
-	numbers=left,
-	numberstyle=\small,
-	breakautoindent=true
-}
-
 % page setup
 % \setlength{\topskip}{\ht\strutbox}
 \geometry{paper=a4paper,left=2.5cm,top=3.0cm,bindingoffset=.8cm}
 \onehalfspacing
 \frenchspacing
 \clubpenalty = 10000
-\widowpenalty = 10000 
+\widowpenalty = 10000
 \displaywidowpenalty = 10000
 
 % some commands
@@ -123,9 +110,6 @@
 \newcommand{\wrt}{\mbox{w.\,r.\,t.\ }}
 \newcommand{\etal}{\mbox{\emph{et.\,al.\ }}}
 
-
-% TODO remove if not needed...
-\usepackage{blindtext}
 
 % load glossary entries
 \makenoidxglossaries
@@ -141,7 +125,7 @@
 
 % download the following form and complete it (hit save in your editor)
 % https://intern.ohmportal.de/fileadmin/Gelenkte_Doks/Abt/SZS/SB/SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf
-\includepdf{SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf}\cleardoublepage
+% \includepdf{SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf}\cleardoublepage
 
 \include{content/0_abstract}\cleardoublepage
 
@@ -150,24 +134,14 @@
 \mainmatter
 \include{content/1_intro}
 \include{content/2_data}
-\include{content/3_method}
-\include{content/4_experiments}
 \include{content/5_outlook}
 \include{content/6_summary}
-
-% remove if not needed
-\appendix
-\include{content/a1_supplemental}
 
 \backmatter
 \listoffigures
 \cleardoublepage
 
 \listoftables
-\cleardoublepage
-
-\renewcommand{\lstlistlistingname}{List of Listings}  % change for German thesis
-\lstlistoflistings
 \cleardoublepage
 
 \bibliographystyle{wmaainf}
