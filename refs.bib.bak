@@ -1,4 +1,4 @@
-@Misc{googleShare,
+@Misc{,
   author   = {NetMarketShare},
   title    = {Marktanteile der Suchmaschinen - Mobil und stationär 2022},
   year     = {2022},
@@ -8,7 +8,7 @@
   url      = {https://de.statista.com/statistik/daten/studie/222849/umfrage/marktanteile-der-suchmaschinen-weltweit/},
 }
 
-@Misc{googleUmsatz,
+@Misc{,
   author   = {Alphabet},
   title    = {Werbeumsätze der Google-Websites weltweit in den Jahren 2001 bis 2021},
   year     = {2022},
@@ -18,7 +18,7 @@
   url      = {https://de.statista.com/statistik/daten/studie/75181/umfrage/werbeumsatz-der-google-websites-seit-2001/},
 }
 
-@Misc{googleVisits,
+@Misc{,
   author   = {SimilarWeb},
   title    = {Anzahl der Visits von google.com von März 2019 bis August 2022},
   year     = {2022},
@@ -28,7 +28,7 @@
   url      = {https://de.statista.com/statistik/daten/studie/1022348/umfrage/anzahl-der-visits-pro-monat-von-googlecom/},
 }
 
-@Misc{crossload,
+@Misc{,
   author   = {Pfleiderer, Daniel},
   title    = {CROSSLOAD},
   year     = {2022},
@@ -39,7 +39,7 @@
   url      = {https://crossload.org/info/ueber},
 }
 
-@Book{Witte2016,
+@Book{,
   author    = {Witte, Frank},
   publisher = {Springer Fachmedien},
   title     = {Testmanagement und Softwaretest},
@@ -52,7 +52,7 @@
   url       = {http://link.springer.com/10.1007/978-3-658-09964-0},
 }
 
-@Misc{Jeffries2022,
+@Misc{,
   author   = {Jeffries, Ron},
   month    = sep,
   title    = {Essential XP: Card, Conversation, Confirmation},
@@ -61,7 +61,7 @@
   url      = {https://ronjeffries.com/xprog/articles/expcardconversationconfirmation/},
 }
 
-@Article{Jacobson2016,
+@Article{,
   author     = {Jacobson, Ivar and Spence, Ian and Kerr, Brian},
   journal    = {Queue},
   title      = {Use-Case 2.0: The Hub of Software Development},
