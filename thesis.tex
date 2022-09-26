@@ -121,31 +121,32 @@
 \setcounter{tocdepth}{2}  % ...but don't include them in toc
 
 \frontmatter
-\include{cover}\cleardoublepage
+\include{cover}
+\clearpage
 
 % download the following form and complete it (hit save in your editor)
 % https://intern.ohmportal.de/fileadmin/Gelenkte_Doks/Abt/SZS/SB/SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf
 % \includepdf{SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf}\cleardoublepage
 
 \include{content/0_abstract}
-\cleardoublepage
+\clearpage
 
 \tableofcontents
 
 \mainmatter
-\include{content/1_intro}
-\include{content/2_data}
-\include{content/5_outlook}
-\include{content/6_summary}
+\include{content/1_einleitung}
+\include{content/2_grundlagen}
+\include{content/3_anforderungen}
+\include{content/4_konzeption}
+\include{content/5_entwicklung}
+\include{content/6_evaluation}
+\include{content/7_discussion}
+\include{content/8_outlook}
 
 \backmatter
 \listoffigures
-\cleardoublepage
-
 \listoftables
-\cleardoublepage
-
-\bibliographystyle{wmaainf}
+\bibliographystyle{ieeetr}
 \bibliography{refs}
 
 \printnoidxglossaries
