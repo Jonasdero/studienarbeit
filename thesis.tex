@@ -53,7 +53,13 @@
 \usepackage{lmodern,relsize,textcomp,csquotes}
 \usepackage{amsfonts}
 \usepackage[english,ngerman]{babel}  % flip for German thesis
-\usepackage[final]{graphicx}
+\usepackage{subcaption}
+\DeclareCaptionFormat{custom}
+{%
+    \textbf{#1#2}\textit{\small #3}
+}
+\captionsetup{format=custom}
+\usepackage{graphicx}
 \usepackage{setspace,geometry,xcolor}
 \usepackage{makeidx}
 \usepackage{url}
@@ -142,9 +148,9 @@
 \include{content/6_evaluation}
 \include{content/7_discussion}
 \include{content/8_outlook}
+\include{content/9_annex}
 
 \backmatter
-\include{content/9_anhang}
 \listoffigures
 \listoftables
 \bibliographystyle{ieeetr}
