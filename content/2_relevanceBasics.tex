@@ -1,13 +1,43 @@
-\chapter{Methoden zur Bewertung der Relevanz von Suchergebnissen}
+\chapter{Grundlagen}
 \label{ch:grundlagen}
 
-Relevanz ist sehr schwer objektiv zu beschreiben, da es von Person zu Person unterschiedlich ist, bzw. sogar eine Person kontextabhängig eine andere Relevanz für das gleiche Objekt zumisst. Der Kontext der Suche innerhalb einer Webanwendung, z.B. auf Google schränkt den Kontext zwar stark ein, dennoch bleibt das Problem, dass der Nutzer das Erhalten relevanter Suchergebnisse als gegeben vorraussetzt. Im Folgenden werden deswegen die Grundlagen von Relevanz bei textuellen Suchbegriffen betrachtet, sowie einige Methoden um diese zu bewerten.
+\section{Relevanz}
 
-\section{Relevanz von Suchergebnissen}
+Relevanz ist allgemein beschrieben eine Beziehung zwischen einem Individuum, dem zeitlichen Rahmen, in welchem dieses eine Information benötigt und einer beliebigen Information.\footnote{vgl. Bookstein S. 1 \cite{bookstein2007}}
+Das bedeutet, dass Relevanz von Person zu Person unterschiedlich ist, da zum einen diverse Informationen nur zu einer bestimmten Zeit notwendig bzw. wichtig sind und der Kontext der benötigten Information sich ständig ändert.
 
+% Relevant Search ab Seite 6 (PFD: 31)
+% TODO: Absätze über Information Retrieval by Christopher D. Manning Was ist Informationsgewinnung, Was hat Relevanzz damit zu tun
 
+\section{Relevanz von Suchergebnissen und Methoden zur Bewertung}
 
-Die Relevanz einer Suche hängt stark vom Kontext ab, aus dem die Suche abgegeben wurden. So werden in einer Web Suche die etwa bei Google abgegeben wurde andere Ergebnisse erwartet als etwas bei der Suche in einer Ecommerce Website wie Amazon.
+Eine \gls{searchEngine} gibt nach Anfrage Websiten sortiert nach der Relevanz der Ergebnisse abhängig zum gegebenen Suchbegriff des Nutzers.
+Die Schwierigkeit dabei, ist die Bestimmung der Relevanz für eine beliebige Website.
+Moderne Suchmaschinen nutzen dutzende oder gar hunderte verschiedener Methoden um Features um die Relevanz der verfügbaren Suchergebnisse zu bewerten.
+Die spezifischen Funktionen und Methoden werden von den Unternehmen geheim gehalten, um einen Missbrauch ihrer \gls{searchEngine} zu verhindern.
+Dennoch sind die am häufigsten genutzten Merkmale bekannt und in einigen wissenschaftlichen Arbeiten untersucht worden.\footnote{vgl. Zaragoza, Najork, S. 1 \cite{zaragoza2018}}
 
+Zur Einfachheit wird von der Webapplikation \gls{crossload} abstrahiert und stattdessen Beispiele aus der Internetsuche verwendet, welche zum Beispiel mit Google, Bing, Ecosia oder anderen \gls{searchEngine}n üblich ist.
 
-\section{Methoden zur Bewertung der Relevanz}
+\subsection{Textuelle Relevanz}
+Das einfachste Merkmal für die Bewertung der Relevanz ist den kompletten Inhalt nach der textuellen Relevanz zu bewerten.
+Da natürliche Sprache, die meist für Suchergebnisse genutzt wird, generell ungenau ist, wird mit sogenannten "Matching Functions" versucht auch ungefähre Übereinstimmungen in einem Fliesstext zu finden.
+Einige der verwendeten Funktionen um die textuelle Relevanz zu bewerten sind dabei\footnote{vgl. Zaragoza, Najork, S. 1 \cite{zaragoza2018}}
+
+\begin{itemize}
+  \item Die Anzahl der Treffer für den Suchterm oder Abwandlungen
+  \item Position des Suchterms (früheres Vorkommen)
+  \item Seiten Struktur (für Websiten: Ist der Term eine Überschrift o.ä.)
+  \item Grafisches Layout (für Websiten: Ist der Term z.B. farblich markiert)
+\end{itemize}
+\subsection{Relevanz durch Attribute}
+
+\subsection{Hyperlink Relevanz}
+
+\subsection{Relevanz durch Nutzerverhalten}
+
+\subsection{Performance}
+
+\subsection{Personalisierung}
+
+\subsection{Kombination}
