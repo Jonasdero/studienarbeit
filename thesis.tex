@@ -12,11 +12,10 @@
     bibliography=totoc,
     index=totoc,
     captions=tableheading,  % caption below table
-    chapterprefix,
+    % chapterprefix,
     listof=flat,
     final
 ]{scrbook}
-% TODO document class bearbeiten
 
 % details about your thesis
 \newcommand{\titel}{Entwicklung eines Suchalgorithmusprototypen zur Bewertung von Suchergebnissen verschiedener Kategorien}
@@ -31,19 +30,31 @@
 \newcommand{\logo}{figures/TH-Nuernberg-RGB.png}
 \newcommand{\keywords}{}
 
-
 % custom head and foot
 \usepackage[automark]{scrlayer-scrpage}
+
 \pagestyle{scrheadings}
 \ihead{\headmark}
 \chead{}
 \ohead{\pagemark}
-\renewcommand*\chaptermarkformat{\chapappifchapterprefix{\ }%
-  \thechapter.\enskip}
+\renewcommand*\sectionmarkformat{
+  \chapappifchapterprefix{\ }%
+  \thechapter.\enskip
+}
 
-\RedeclareSectionCommand[tocindent=0pt]{section}
-\RedeclareSectionCommand[tocindent=0pt]{subsection}
-%\RedeclareSectionCommand[tocnumwidth=70pt]{chapter}
+% Chapter and Section margins
+% If needed adjust margins here to drastically increase pages ;)
+\RedeclareSectionCommand[
+  beforeskip=0\baselineskip,
+  afterskip=.5\baselineskip]{chapter}
+\RedeclareSectionCommand[
+  tocindent=0pt,
+  beforeskip=0.5\baselineskip,
+  afterskip=.1\baselineskip]{section}
+\RedeclareSectionCommand[
+  tocindent=10pt,
+  beforeskip=-.25\baselineskip,
+  afterskip=0.1\baselineskip]{subsection}
 
 \usepackage{scrhack}
 
@@ -52,7 +63,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,relsize,textcomp,csquotes}
 \usepackage{amsfonts}
-\usepackage[english,ngerman]{babel}  % flip for German thesis
+\usepackage[ngerman,english]{babel}  % flip for German thesis
+\usepackage{caption}
 \usepackage{subcaption}
 \DeclareCaptionFormat{custom}
 {%
@@ -60,6 +72,7 @@
 }
 \captionsetup{format=custom}
 \usepackage{graphicx}
+\usepackage{wrapfig}
 \usepackage{setspace,geometry,xcolor}
 \usepackage{makeidx}
 \usepackage{url}
@@ -94,6 +107,8 @@
     plainpages=false,
     hypertexnames=true,
     linktocpage=true,
+    linktoc=all,
+    % hidelinks Uncomment in Production build
 ]{hyperref}
 
 % page setup
@@ -105,17 +120,10 @@
 \widowpenalty = 10000
 \displaywidowpenalty = 10000
 
-% some commands
-\newcommand{\ua}{\mbox{u.\,a.\ }}
-\newcommand{\zB}{\mbox{z.\,B.\ }}
-\newcommand{\dahe}{\mbox{d.\,h.,\ }}
-\newcommand{\bzw}{\mbox{bzw.\ }}
-\newcommand{\bzgl}{\mbox{bzgl.\ }}
-\newcommand{\eg}{\mbox{e.\,g.\ }}
-\newcommand{\ie}{\mbox{i.\,e.\ }}
-\newcommand{\wrt}{\mbox{w.\,r.\,t.\ }}
-\newcommand{\etal}{\mbox{\emph{et.\,al.\ }}}
-
+% Uncomment to enable better printing support
+% \clearpage
+% Comment to enable better printing support
+\let\cleardoublepage=\clearpage
 
 % load glossary entries
 \makenoidxglossaries
@@ -129,15 +137,9 @@
 \frontmatter
 \pagenumbering{Roman}
 \include{cover}
-\clearpage
-
-% download the following form and complete it (hit save in your editor)
-% https://intern.ohmportal.de/fileadmin/Gelenkte_Doks/Abt/SZS/SB/SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf
-% \includepdf{SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf}\cleardoublepage
-
 \include{content/0_abstract}
-
 \tableofcontents
+\printnoidxglossaries
 
 \mainmatter
 \include{content/1_intro}
@@ -148,14 +150,16 @@
 \include{content/6_evaluation}
 \include{content/7_discussion}
 \include{content/8_outlook}
-\include{content/9_annex}
 
 \backmatter
+\pagenumbering{Roman}
+% \renewcommand{\thechapter}{\Alph{chapter}}
+% \renewcommand{\thesection}{\Roman{section}}
+% \renewcommand{\thesubsection}{\Roman{section}}
+\include{backmatter/annex}
 \listoffigures
 \listoftables
 \bibliographystyle{ieeetr}
 \bibliography{refs}
-
-\printnoidxglossaries
 
 \end{document}
