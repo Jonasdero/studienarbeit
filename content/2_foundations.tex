@@ -1,0 +1,77 @@
+\chapter{Theoretische Grundlagen}
+\label{ch:grundlagen}
+
+\section{Relevanz}
+
+Relevanz ist allgemein beschrieben eine Beziehung zwischen einem Individuum, dem zeitlichen Rahmen, in welchem dieses eine Information benötigt und einer beliebigen Information.\footnote{vgl. Bookstein S. 1 \cite{bookstein2007}}
+Das bedeutet, dass Relevanz von Person zu Person unterschiedlich ist, da zum einen diverse Informationen nur zu einer bestimmten Zeit notwendig bzw. wichtig sind und der Kontext der benötigten Information sich ständig ändert.
+
+Um zu verstehen, woher die Relevanz stammt bzw. in der Informationstechnik verwendet wird, ist es wichtig die Gewinnung von Informationen aus Objekten (\emph{Information Retrieval}) zu verstehen.
+Dieser Teil der Wissenschaft beschäftigt sich mit dem präzisen Abruf von Informationen, um den das Informationsbedürfnis (\emph{Information need}) eines Nutzers zu stillen.
+Das Informationsbedürfnis wird hierbei von einem idealen Inhalt gestillt, stellt also die Spezifikation eines idealen Inhalts dar. Diese Spezifikation geht aber über den reinen textuellen Inhalt der Suche hinaus. Die Relevanz ist dabei die Aktivität bzw. Praxis um diesen idealen Inhalt zu finden.\footnote{vgl. Manning, Raghavan, Schütze \cite{manning2008}}
+
+\section{Methoden zur Bewertung von Relevanz}
+
+Eine \gls{searchEngine} gibt nach Anfrage Websiten sortiert nach der Relevanz der Ergebnisse abhängig zum gegebenen Suchbegriff des Nutzers.
+Die Schwierigkeit dabei, ist die Bestimmung der Relevanz für eine beliebige Website.
+Die dafür genutzten Funktionen und Methoden werden allerdings von den Unternehmen geheim gehalten, um einen Missbrauch ihrer \gls{searchEngine} zu verhindern.
+Dennoch sind die am häufigsten genutzten Merkmale bekannt und in einigen wissenschaftlichen Arbeiten untersucht worden.\footnote{vgl. Zaragoza, Najork, S. 1 \cite{zaragoza2018}}
+Da Moderne Suchmaschinen nutzen dutzende oder gar hunderte verschiedener Methoden um Features um die Relevanz der verfügbaren Suchergebnisse zu bewerten, wird im folgenden nur auf einige bekannte Methoden eingegangen.
+
+Zur Einfachheit wird von der Webapplikation \gls{crossload} abstrahiert und stattdessen Beispiele aus der Internetsuche verwendet, welche zum Beispiel mit Google, Bing, Ecosia oder anderen \gls{searchEngine}n üblich ist.
+
+\subsection{Textuelle Relevanz}
+\label{sub:relevanceText}
+Das einfachste Merkmal für die Bewertung der Relevanz ist den kompletten Inhalt nach der textuellen Relevanz zu bewerten.
+Da natürliche Sprache, die meist für Suchergebnisse genutzt wird, generell ungenau ist, wird mit sogenannten "Matching Functions" versucht auch ungefähre Übereinstimmungen in einem Fliesstext zu finden.
+Einige der verwendeten Funktionen um die textuelle Relevanz zu bewerten sind dabei:\footnote{vgl. Zaragoza, Najork, S. 1 \cite{zaragoza2018}}
+
+\begin{itemize}
+  \item Die Anzahl der Treffer für den Suchterm oder Abwandlungen
+  \item Position des Suchterms (früheres Vorkommen)
+  \item Seiten Struktur (für Websiten: Ist der Term eine Überschrift o.ä.)
+  \item Grafisches Layout (für Websiten: Ist der Term z.B. farblich markiert)
+\end{itemize}
+\subsection{Relevanz durch Attribute}
+\label{sub:relevanceAttribute}
+Desweiteren ist es auch möglich den durchsuchten Objekten Attribute zuzuweisen, um für Schlagwörter relevantere Ergebnisse zu erlangen.
+Diese können entweder von Nutzern selbst bestimmt werden, wie z.B. bei der Website Flickr\footnote{vgl. Liu et. al., S. 1-3 \cite{liu2009}}, um Bilder für bestimmte Themen höher werten zu lassen oder werden von Algorithmen aufgrund von Bilderkennung automatisch zugewiesen.
+
+Ein Beispiel hierfür ist Google, welches eine frei verwendbare Machine Learning API\footnote{vgl. Google ML Dokumentation \cite{googledevelopers2022}} oder eine direkt Integration in die Google Photos App anbietet, welche die gemachten Bilder automatisch in verschiedene Kategorien aufteilt.\footnote{vgl. Google Photos \cite{googlephotos2022}}
+
+
+\subsection{Hyperlink Relevanz}
+\label{sub:relevanceHyperlink}
+Für Suchergebnisse im Internet oder andere miteinander verlinkte Seiten, wie z.B. in internen Dokumentationsseiten, Wikis o.ä., können auch die Hyperlinks,
+die auf eine andere Seite verlinken genutzt werden die Relevanz eines Ergebnisses zu bestimmen.
+Ein Hyperlink besteht hierbei aus dem angezeigten Text auf der Quellseite und einem Link zur Zielseite oder auf einen bestimmten Abschnitt dergleichen. Dies ist aber kein automatischer Prozess, sondern jeder Link wird von Menschen gesetzt. Aus diesem Grund kann man hier von "menschlicher Intelligenz" sprechen.\footnote{vgl. Zaragoza, Najork, S. 2 \cite{zaragoza2018}}
+
+Um einen Treffer höher zu gewichten, ist eine Option die Anzahl an Verlinkungen auf eine Seite zu zählen und absteigend zu sortieren.\footnote{vgl. Marchiori \cite{marchiori1997}}
+Alternativ kann der angezeigte Linktext noch zusätzlich als eine Art Attribut (\ref{sub:relevanceAttribute}) oder erweiterte textuelle Referenz (\ref{sub:relevanceText}) gesehen werden, der dann bei der Auswertung einer Suche mitverwendet wird.\footnote{vgl. Page, Brin, Motwani and Winograd \cite{ilprints422}}
+
+\subsection{Relevanz durch Nutzerverhalten}
+\label{sub:relevanceUser}
+Um unabhängiger von manuellem Verlinken zwischen Seiten zu werden, haben bekannte Suchmaschinen auch Möglichkeiten entwickelt, die Anzahl der "erfolgreich" gefundenen Treffer zu zählen und als relevanter zu gewichten.
+Im Umfeld einer Internetsuche wäre der "erfolgreich" gefundene Treffer ein Klick auf die entsprechende Website.
+Diese können entweder live oder durch Auswertung von Log Dateien analysiert werden. Andere Wege um die Anzahl an Besuchen auf einer Website zu messen umfassen Tracking Methoden, Toolbars oder Werbung.
+Diese Methode ist überaus erfolgreich, da hier von einer Art Schwarmintelligenz ausgegangen wird, die Nutzern für die gleiche Suche Ergebnisse anzeigt, die schon viele Benutzer davor angeklickt haben. \footnote{vgl. Joachims, Radlinski, S. 1 \cite{joachims2007}}
+
+\subsection{Performance}
+\label{sub:relevancePerformance}
+Da Suchmaschinen dem Nutzer eine bestmögliche User Experience ermöglichen wollen, sollen die gefundenen Websiten dies bieten. Eine Möglichkeit dies zu messen ist die Performance einer Website.
+Dies umfasst die Ladegeschwindigkeit, Speicherverbrauch und benötigte Leistung um die Seite komplett anzuzeigen.
+Da dies nicht für x-Millionen Treffer bei jeder Suchanfrage getestet werden kann, werden mögliche Suchtreffer vorher indiziert und nach der Performance untersucht.
+Dadurch entsteht ein Performance Score, welcher dann für die Relevanz verwendet werden kann.\footnote{vgl. Manning, Raghavan, Schütze \cite{manning2008}}
+
+\section{Auswertung der Relevanzv von Suchergebnissen}
+\label{sec:relevanceScore}
+Um letztendlich Ergebnisse mit der höchsten Relevanz zu erhalten wird meist eine Kombination aus mehreren der o.g. Methoden benutzt, um die komplette Relevanz für einen Treffer zu bewerten.
+Die Herausforderung dabei ist die genaue Gewichtung der einzelnen Methoden um die Relevanz eines Treffers optimal zu bewerten.
+Für jeden Treffer wird dann ein Relevanz Score berechnet, der sich aus den einzelnen Methoden zusammensetzt. Nach diesem Score wird in einer Liste absteigend sortiert, um das relevanteste Ergebnis als erstes Element zu erhalten.
+
+Sollte sich der Score eines Treffers in der Relation zu anderen Scores weit absetzen, kann dieser Treffer dem Nutzer auch direkt vorgeschlagen werden.\footnote{vgl. Turnbull, Berryman, S. 225-228 \cite{turnbull2016}} Dieses Vorschlagen von Ergebnissen kann bereits bei der Eingabe einer Abfrage geschehen, durch sogenannte "Search Completion".\footnote{vgl. Turnbull, Berryman, S. 206-218 \cite{turnbull2016}}
+
+Für kleinere Anwendungen ist hierbei meist ein manuelles Einstellen nach einem \gls{trialAndError} Verfahren notwendig, bei denen einige wenige Methoden unterschiedlich gewichtet werden.
+Dies wird dann von Zeit zu Zeit wiederholt, wenn neue Erkenntnisse aus Tests oder dem produktiven Betrieb zurückkommen.\footnote{vgl. Zaragoza, Najork, S. 3 \cite{zaragoza2018}}
+
+Große Suchmaschinen Nutzen hierfür allerdings wie bereits erwähnt hunderte Methoden und evaluieren deren Erfolg im produktiven Betrieb durch proprietäre statistische Methoden.\footnote{vgl. Taylor, Zaragoza, Craswell, Robertson, Burges \cite{taylor2006}}
