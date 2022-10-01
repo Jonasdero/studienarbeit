@@ -1,10 +1,14 @@
 \appendix
 
+\pagenumbering{Alph}
+\renewcommand{\thechapter}{\Alph{chapter}}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Roman{section}}
+
 \chapter{Anhang}
 \label{appendix:annex}
 
-\section{Einleitung}
-
+\section{Bilder}
 \begin{wrapfigure}{l}{\textwidth}
   \begin{centering}
     \includegraphics[width=.8\textwidth]{figures/appendix/werbeumsatz.png}
@@ -20,6 +24,7 @@
     \label{fig:marketshare}
   \end{centering}
 \end{wrapfigure}
+
 
 % 2 Images on one page
 % \begin{figure}

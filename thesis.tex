@@ -63,7 +63,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,relsize,textcomp,csquotes}
 \usepackage{amsfonts}
-\usepackage[ngerman,english]{babel}  % flip for German thesis
+\usepackage[english,ngerman]{babel}
+\usepackage[english,ngerman]{tracklang}
 \usepackage{caption}
 \usepackage{subcaption}
 \DeclareCaptionFormat{custom}
@@ -76,7 +77,7 @@
 \usepackage{setspace,geometry,xcolor}
 \usepackage{makeidx}
 \usepackage{url}
-\usepackage[toc]{glossaries}
+
 \usepackage{pdfpages}
 
 % table setup
@@ -110,6 +111,7 @@
     linktoc=all,
     % hidelinks Uncomment in Production build
 ]{hyperref}
+\usepackage{glossaries}
 
 % page setup
 % \setlength{\topskip}{\ht\strutbox}
@@ -127,6 +129,7 @@
 
 % load glossary entries
 \makenoidxglossaries
+\setglossarystyle{long3colheader}
 \loadglsentries{glossary}
 
 % Remove hbox errors
@@ -138,9 +141,11 @@
 \setcounter{tocdepth}{2}  % ...but don't include them in toc
 
 \frontmatter
+\thispagestyle{empty}
 \pagenumbering{Roman}
 \include{cover}
 \include{content/0_abstract}
+\printnoidxglossaries
 \tableofcontents
 
 \mainmatter
@@ -154,11 +159,6 @@
 \include{content/8_outlook}
 
 \backmatter
-\pagenumbering{Roman}
-\printnoidxglossaries
-% \renewcommand{\thechapter}{\Alph{chapter}}
-% \renewcommand{\thesection}{\Roman{section}}
-% \renewcommand{\thesubsection}{\Roman{section}}
 \include{backmatter/annex}
 \listoffigures
 \listoftables
