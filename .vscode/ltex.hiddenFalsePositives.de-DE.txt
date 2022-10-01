@@ -1,0 +1,7 @@
+{"rule":"OLD_SPELLING","sentence":"^\\QEin Beispiel hierfür ist Google, welches eine frei verwendbare Machine Learning API oder eine direkte Integration in die Google Photos App anbietet, welche die gemachten Bilder automatisch in verschiedene Kategorien aufteilt.\\E$"}
+{"rule":"OLD_SPELLING","sentence":"^\\QVgl. Google Photos \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
+{"rule":"OLD_SPELLING","sentence":"^\\QEin Beispiel hierfür ist Google, welches eine frei verwendbare Machine Learning API oder eine direkte Integration, in die Google Photos App anbietet, welche die gemachten Bilder automatisch in verschiedene Kategorien aufteilt.\\E$"}
+{"rule":"UNPAIRED_BRACKETS","sentence":"^\\QDa natürliche Sprache, die meist für Suchergebnisse genutzt wird, generell ungenau ist, wird mit sogenannten „Matching Functions\" versucht auch ungefähre Übereinstimmungen in einem Fließtext zu finden.\\E$"}
+{"rule":"DE_AGREEMENT","sentence":"^\\QDa Suchmaschinen dem Nutzer eine bestmögliche User Experience ermöglichen wollen, sollen die gefundenen Websiten dies bieten.\\E$"}
+{"rule":"ET","sentence":"^\\QVgl. Liu et.al., S. 1-3 \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
+{"rule":"TOO_LONG_PARAGRAPH","sentence":"^\\QDadurch sollen verhindert werden, dass von ähnlich relevante Suchergebnisse nur eines vorgeschlagen wird und ein Suchergebnis vorgeschlagen wird, welches für das gegebene Suchkriterium irrelevant ist.\\E$"}
