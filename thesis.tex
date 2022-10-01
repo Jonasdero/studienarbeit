@@ -111,7 +111,7 @@
     linktoc=all,
     % hidelinks Uncomment in Production build
 ]{hyperref}
-\usepackage{glossaries}
+\usepackage[nonumberlist]{glossaries}
 
 % page setup
 % \setlength{\topskip}{\ht\strutbox}
@@ -129,7 +129,8 @@
 
 % load glossary entries
 \makenoidxglossaries
-\setglossarystyle{long3colheader}
+% \setglossarystyle{altlistgroup}
+\setglossarystyle{altlist}
 \loadglsentries{glossary}
 
 % Remove hbox errors
