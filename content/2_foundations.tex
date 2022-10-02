@@ -28,9 +28,10 @@ Einige der verwendeten Funktionen um die textuelle Relevanz zu bewerten sind dab
 
 \begin{itemize}
   \item Die Anzahl der Treffer für den Suchterm oder Abwandlungen
-  \item Position des Suchterms (früheres Vorkommen)
+  \item Position des Suchterms (früheres Vorkommen, z. B. im Titel)
   \item Seiten Struktur (für Webseite: Ist der Term eine Überschrift o. ä.)
   \item Grafisches Layout (für Webseiten: Ist der Term z. B. farblich markiert)
+  \item Levenshtein Distanz\footnote{Vgl. Levensthein \cite{levenshtein1966binary}} (die minimale Anzahl an Operationen, um eine Zeichenkette in eine andere umzuwandeln.)
 \end{itemize}
 \subsection{Relevanz durch Attribute}
 \label{sub:relevanceAttribute}
@@ -38,7 +39,6 @@ Des Weiteren ist es auch möglich den durchsuchten Objekten Attribute zuzuweisen
 Diese können entweder von Nutzern selbst bestimmt werden, wie z. B. bei der Website Flickr\footnote{Vgl. Liu et.al., S. 1-3 \cite{liu2009}}, um Bilder für bestimmte Themen höher werten zu lassen oder werden von Algorithmen aufgrund von Bilderkennung automatisch zugewiesen.
 
 Ein Beispiel hierfür ist Google, welches eine frei verwendbare Machine Learning API\footnote{Vgl. Google ML Dokumentation \cite{googledevelopers2022}} oder eine direkte Integration, in die Google Fotos App anbietet, welche die gemachten Bilder automatisch in verschiedene Kategorien aufteilt.\footnote{Vgl. Google Fotos \cite{googlephotos2022}}
-
 
 \subsection{Hyperlink Relevanz}
 \label{sub:relevanceHyperlink}

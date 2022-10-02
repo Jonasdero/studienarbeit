@@ -35,3 +35,6 @@ Scores
 Relevanz-Scores
 Goll
 Relevanzscores
+Relevanzscore
+Levenshtein
+Levensthein
