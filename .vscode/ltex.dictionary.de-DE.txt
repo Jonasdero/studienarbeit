@@ -38,3 +38,6 @@ Relevanzscores
 Relevanzscore
 Levenshtein
 Levensthein
+Textmatching
+Boostingmechanismen
+Query

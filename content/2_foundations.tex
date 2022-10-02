@@ -83,4 +83,8 @@ SOLR ist die im vorliegenden Projekt vorliegende Such Engine, die als Web Schnit
 Apache Lucene, oder auch kurz Lucene genannt, ist eine mächtige Suchbibliothek, die plattformunabhängig von verschiedenen bekannten Apps, wie z. B. Netflix eingesetzt wird.
 Lucene nutzt für die Indizierung zu durchsuchender Dokumente Textfelder, wie z. B. „title“ für den Titel eines Dokumentes, um sowohl den Inhalt als Volltext sowie auch die Attribute durchsuchen zu können. \footnote{Siehe Apache Lucene \cite{lucene2022}}
 
-SOLR benutzt die hier die Indexing Funktionen von Lucene, um in Echtzeit alle verfügbaren Dokumente zu indizieren um bei einer Suche nur den Index durchsuchen zu müssen. Mit Apache Zookeeper wird dann eine \gls{api} zur Verfügung gestellt, welche Synchronisierung, Namensregister und die Verteilung der Konfiguration bereitstellt.\footnote{Siehe Apache SOLR \cite{solr2022}}
+SOLR benutzt die hier die Indexing Funktionen von Lucene, um in Echtzeit alle verfügbaren Dokumente zu indizieren um bei einer Suche nur den Index durchsuchen zu müssen.
+Mit Apache Zookeeper wird dann eine \gls{api} zur Verfügung gestellt, welche Synchronisierung, Namensregister und die Verteilung der Konfiguration bereitstellt.
+Inhalte werden anhand von Boostingmechanismen höher oder schlechter bewertet.
+Als Entwickler gibt man hierfür mögliche Textfelder an, auf denen SOLR automatisch ein Textmatching anwendet (\ref{sub:relevanceText}).
+Ebenso ist es möglich eigene Boostingmechanismen zu erstellen, wobei hier dann in Java entwickelt wird.\footnote{Siehe Apache SOLR \cite{solr2022}}

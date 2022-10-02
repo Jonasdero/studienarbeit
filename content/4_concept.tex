@@ -5,6 +5,7 @@ Der Entwurf einer Software ist die Basis für jede Entwicklung.
 Anfangs wird die momentane Anwendung auf bereits implementierte Funktionalität überprüft und schließlich mithilfe der erarbeiteten Methoden zur Bewertung der Relevanz auf Grundlage der gesammelten Anforderungen verbessert.
 
 \section{Bisherige implementierte Funktionalität}
+\label{sec:implementedFunctionality}
 Bei \gls{crossload} werden verschiedene Typen bzw. Kategorien von Inhalten in der von SOLR indizierten Datenbank über eine Spring Boot Anwendung an das Webfrontend zur Verfügung gestellt.
 Der initiale und derzeit implementierte Gedanke dabei ist, die Inhalte auch in diesen Kategorien zu übertragen und in fester Reihenfolge anzuzeigen.
 Diese Vorgehensweise hat jedoch einige Nachteile:
@@ -20,10 +21,16 @@ Ebenso sollen auch die bisher genutzten Methoden zur Berechnung der Relevanz ver
 Diese umfassen:
 
 \begin{itemize}
-  \item
+  \item Ein von SOLR schon verfügbares Matching auf Textteile.
+  \item Ein Matching des Suchterms zu einem Bibelvers.
+  \item Suche nach dem Autor eines Inhalts.
+  \item Oder falls kein Suchterm gegeben ist, werden Inhalte mit Video oder Bild höher bewertet.
+  \item Filter für mitgegebene Query Parameter: Kategorie, Serie, Event, Thema, Jahreszahl oder Dauer.
 \end{itemize}
 
 \section{Verbesserungspotenzial für relevantere Inhalte}
+\label{sec:potential}
 
 
 \section{Planung der Implementation}
+\label{sec:planning}
