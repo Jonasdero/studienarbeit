@@ -67,6 +67,12 @@
 \usepackage[english,ngerman]{tracklang}
 \usepackage{caption}
 \usepackage{subcaption}
+\DeclareCaptionLabelFormat{custom}
+{%
+      #1 \textbf{(#2)}
+}
+% Separator style
+\DeclareCaptionLabelSeparator{custom}{--}
 \DeclareCaptionFormat{custom}
 {%
     \textbf{#1#2}\textit{\small #3}
@@ -159,8 +165,8 @@
 \include{content/7_discussion}
 \include{content/8_outlook}
 
-\backmatter
 \include{backmatter/annex}
+\backmatter
 \listoffigures
 \listoftables
 \bibliographystyle{ieeetr}

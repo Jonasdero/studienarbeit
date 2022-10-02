@@ -33,3 +33,5 @@ Application
 Programming
 Scores
 Relevanz-Scores
+Goll
+Relevanzscores
