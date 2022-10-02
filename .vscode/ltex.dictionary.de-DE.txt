@@ -41,3 +41,4 @@ Levensthein
 Textmatching
 Boostingmechanismen
 Query
+Boosting

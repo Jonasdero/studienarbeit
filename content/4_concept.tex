@@ -21,15 +21,24 @@ Ebenso sollen auch die bisher genutzten Methoden zur Berechnung der Relevanz ver
 Diese umfassen derzeit:
 
 \begin{itemize}
-  \item Ein von SOLR schon verfügbares Matching auf Textteile.
-  \item Ein Matching des Suchterms zu einem Bibelvers.
-  \item Suche nach dem Autor eines Inhalts.
+  \item Text Matching auf verschiedene Textteile und Attribute. Hier werden verschiedene Attribute in 3 Kategorien (hoch, mittel, niedrig) wie folgend bewertet:
+  \begin{itemize}
+    \item \textbf{Hoch:} Titel, Serie, Thema, Autor
+    \item \textbf{Mittel:} Untertitel, Schlagwörter, Kategorie, Thema
+    \item \textbf{Niedrig:} Verlag, Standort, Dateiname, Speech to Text, Mitschrift, Suchsnippet
+  \end{itemize}
+  \item Matching des Suchterms zu einem Bibelvers.
   \item Oder falls kein Suchterm gegeben ist, werden Inhalte mit Video oder Bild höher bewertet.
-  \item Filter für mitgegebene Query Parameter: Kategorie, Serie, Event, Thema, Jahreszahl oder Dauer.
+  \item Filter für mitgegebene Query Parameter: Kategorie, Serie, Event, Thema, Jahreszahl oder Dauer. Inhalte, die nicht zu diesem Filter passen, werden komplett aussortiert.
 \end{itemize}
 
 \section{Verbesserungspotenzial für relevantere Inhalte}
 \label{sec:potential}
+
+Grundsätzlich findet die Anwendung bereits passende bzw. relevante Inhalte durch das Matching der verschiedenen Attribute (\ref{sub:relevanceAttribute}) und Textteile (\ref{sub:relevanceText}).
+Ebenso das Matching bezüglich des Bibelverses oder des initialen Boosting über ein vorhandenes Video oder Bild führt bereits zum gewünschten Ergebnis und eine Änderung würde hier keinen nennenswerten Mehrwert bieten.
+
+% TODO Auf Kategorie eingehen, Schlagwörter für verschiedene Kategorien identifizieren und höher boosten e.g. wenn nach Video gesucht, soll auch ein Video kommen.
 
 
 \section{Planung der Implementation}
