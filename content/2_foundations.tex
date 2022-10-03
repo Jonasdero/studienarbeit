@@ -82,7 +82,7 @@ Große Suchmaschinen Nutzen hierfür allerdings wie bereits erwähnt hunderte Me
 
 \section{SOLR}
 \label{sec:SOLR}
-SOLR ist die im vorliegenden Projekt vorliegende Such Engine, die als Web Schnittstelle dient, um auf einer Datenmenge Suchanfragen mit Apache \gls{lucene} auszuwerten.\footnote{Siehe Apache SOLR \cite{solr2022}}
+SOLR ist von Crossload verwendete Such Engine, die als Web Schnittstelle dient, um auf einer Datenmenge Suchanfragen mit Apache \gls{lucene} auszuwerten.\footnote{Siehe Apache SOLR \cite{solr2022}}
 
 Apache Lucene, oder auch kurz Lucene genannt, ist eine mächtige Suchbibliothek, die plattformunabhängig von verschiedenen bekannten Apps, wie z. B. Netflix eingesetzt wird.
 Lucene nutzt für die Indizierung zu durchsuchender Dokumente Textfelder, wie z. B. „title“ für den Titel eines Dokumentes, um sowohl den Inhalt als Volltext sowie auch die Attribute durchsuchen zu können. \footnote{Siehe Apache Lucene \cite{lucene2022}}
@@ -92,3 +92,24 @@ Mit Apache Zookeeper wird dann eine \gls{api} zur Verfügung gestellt, welche Sy
 Inhalte werden anhand von Boostingmechanismen höher oder schlechter bewertet.
 Als Entwickler gibt man hierfür mögliche Textfelder an, auf denen SOLR automatisch ein Textmatching anwendet (\ref{sub:relevanceText}).
 Ebenso ist es möglich eigene Boostingmechanismen zu erstellen, wobei hier dann in Java entwickelt wird.\footnote{Siehe Apache SOLR \cite{solr2022}}
+
+
+\section{Crossload}
+\label{sec:crossload}
+Crossload ist eine Predigtdatenbank, deren Ziel es ist, mit modernen Technologien und einem ansprechendem User Interface (\gls{ui}) den Zugang zu Predigten und anderem christlichen Material zu vereinfachen.
+Hierzu werden teils Predigten aus anderen System importiert, teils Autoren angefragt, welche dann regelmäßig ihre eigenen Predigten selbstständig hochladen.
+Dadurch sind sowohl ältere Predigten, etwa von Martin Luther, als auch Predigten zu aktuellen Themen und Weltgeschehen verfügbar.
+Zudem gibt es Schnittstellen zu christlichen Verlagen oder Webseiten wie CLV\footnote{Siehe CLV \cite{clv2022}} oder Evangelium 21\footnote{Siehe Evangelium 21 \cite{evangelium21e.v.22}}.\footnote{Vgl. Pfleiderer, Crossload \cite{pfleiderer2022}}
+
+Technisch ist Crossload wie folgt aufgestellt:
+\begin{itemize}
+  \item \textbf{Frontend:} UI entwickelt mit Angular zum Durchsuchen der Datenbank und direktem Streaming der Predigten
+  \item \textbf{Suche:} Auf SOLR basierte REST API mit allen veröffentlichten Inhalten und anderen Metadaten. Wird benutzt, um Last vom redaktionellen Backend zu nehmen.
+  \item \textbf{Redaktion:} Aufbereitung und Anlegen von Inhalten verschiedenster Kategorien und anderer Metadaten.
+  \begin{itemize}
+    \item \textbf{Angular UI}: Redaktionelles Backend zum Pflegen aller Daten von Crossload.
+    \item \textbf{Node.js RESTFUL API}: Schnittstelle zwischen der UI, der Datenbank und AWS.
+    \item \textbf{\gls{aws}}: Speicherung von Dateien (Audio, Video, Bilder).
+    \item \textbf{\gls{mongo}}: Datenbank zur Verwaltung und Speicherung aller Daten.
+  \end{itemize}
+\end{itemize}
