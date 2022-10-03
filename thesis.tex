@@ -50,11 +50,11 @@
   afterskip=.5\baselineskip]{chapter}
 \RedeclareSectionCommand[
   tocindent=0pt,
-  beforeskip=-0.5\baselineskip,
-  afterskip=.2\baselineskip]{section}
+  beforeskip=-.75\baselineskip,
+  afterskip=.25\baselineskip]{section}
 \RedeclareSectionCommand[
   tocindent=10pt,
-  beforeskip=-.25\baselineskip,
+  beforeskip=-.5\baselineskip,
   afterskip=.1\baselineskip]{subsection}
 
 \usepackage{scrhack}
@@ -68,17 +68,25 @@
 \usepackage[english,ngerman]{tracklang}
 \usepackage{caption}
 \usepackage{subcaption}
+% Label format
 \DeclareCaptionLabelFormat{custom}
 {%
-      #1 \textbf{(#2)}
+  \textbf{#1 (#2)}
 }
 % Separator style
 \DeclareCaptionLabelSeparator{custom}{--}
+% Caption format
 \DeclareCaptionFormat{custom}
 {%
-    \textbf{#1#2}\textit{\small #3}
+  #1#2\small #3
 }
-\captionsetup{format=custom}
+\captionsetup
+{
+  format=custom,%
+  labelformat=custom,%
+  labelsep=custom
+}
+
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{setspace,geometry,xcolor}
