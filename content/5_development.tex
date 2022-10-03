@@ -1,2 +1,26 @@
 \chapter{Entwicklung des Prototyps}
 \label{ch:development}
+
+Die Umsetzung des Prototyps erfolgt in mehreren Schritten. Zu Beginn wird wie in \ref{sub:unifiedList} beschrieben, die Liste aller Ergebnisse zusammengeführt und absteigend nach der Relevanz sortiert. Anschließend wird der Schlagwortabgleich (\ref{sub:keyword}) implementiert, indem konfigurierbar die Liste der möglichen Synonyme mit dem Suchterm abgeglichen wird und die Ergebnisse geboostet werden, wenn der Suchterm ein Synonym enthält. Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag wie in \ref{sub:suggestion} beschrieben dem Ergebnis hinzugefügt.
+
+\section{Zusammengeführte Liste}
+\label{sec:devUnifiedList}
+
+% TODO: Crossload Frontend Suchseite nicht in Kategorien, sondern Komplett.
+% TODO: Änderungen zusammenfassen https://gitlab.crossload.org/crossload/frontend/frontend/-/tree/studienarbeit
+
+
+\section{Schlagwortabgleich}
+\label{sec:devKeywords}
+
+% TODO Create configurable JSON mit ausgearbeiteten Schlagwörtern
+% TODO For each configuration: Search for Keywords in Search Term
+% TODO If found, boost Contents with Category
+
+
+\section{Vorschläge für weitere Navigation}
+\label{sec:devSuggestions}
+
+% TODO Adjust Schema, -> add suggestion object
+% TODO Create Function to determine suggestion
+% TODO Add Suggestion to result
