@@ -38,7 +38,32 @@ Diese umfassen derzeit:
 Grundsätzlich findet die Anwendung bereits passende bzw. relevante Inhalte durch das Matching der verschiedenen Attribute (\ref{sub:relevanceAttribute}) und Textteile (\ref{sub:relevanceText}).
 Ebenso das Matching bezüglich des Bibelverses oder des initialen Boosting über ein vorhandenes Video oder Bild führt bereits zum gewünschten Ergebnis und eine Änderung würde hier keinen nennenswerten Mehrwert bieten.
 
-% TODO Auf Kategorie eingehen, Schlagwörter für verschiedene Kategorien identifizieren und höher boosten e.g. wenn nach Video gesucht, soll auch ein Video kommen.
+\subsection{Vereinte Liste}
+\label{sub:unifiedList}
+Als oberstes Ziel wird die Liste der gefundenen Inhalte, momentan aufgespalten in die verschiedenen Kategorien wie z. B. Bild, Video, Predigt, Buch, etc., in eine große Liste überführt.
+Dadurch können relevante Inhalte, die bisher durch die vordefinierte Sortierung der Kategorien auf der Suchseite nicht als erste aufgelistet wurden, an der Stelle angezeigt werden, an die der Nutzer sie erwartet.
+Damit der Nutzer dennoch sieht, welcher Inhalt welche Kategorie, wird anschließend zu der ausführlichen Version des Ergebnisses ein kleiner Text mit dessen Kategorie hinzugefügt.
+So geht die bisherige Funktionalität nicht komplett verloren und der Nutzer erhält die relevantesten Inhalte direkt an erster Stelle und sieht sofort dessen Kategorie.
+
+\subsection{Schlagwortabgleich}
+\label{sub:keyword}
+Eine Möglichkeit, die Relevanz der Suchergebnisse im Sinne der Aufgabenstellung zu verbessern, wäre es, anhand des Suchbegriffes herausfiltern, ob z. B. ein Schlagwort wie „Video“ oder „Bild“ verwendet wurde und somit relevante Inhalte dieser Kategorie höher zu gewichten.
+Dafür müssten relevante Schlagwörter ermittelt werden und auch in allen möglichen Varianten untersucht werden, um ein hilfreiches Matching zu erhalten, welches dann anhand dem Attribute „Hauptkategorie“ nachvollzogen werden kann.
+Ein Beispiel für solche Varianten bei Videos wären: „Video“, „Film“, „Stream“, „Live“, etc.
+Eine gewisse Menge an Varianten kann vordefiniert werden, um einen Großteil der Anfragen korrekt abzufangen.
+Um letztendlich aber eine mehr und mehr vollständige Menge an Varianten und Suchbegriffen zu erhalten müssen die abgegebenen Suchabfragen untersucht werden.
+Diese können aber mit Matomo untersucht werden und mit der Zeit angepasst werden.\footnote{Siehe \ref{sec:crossload} \cite{matomo2022}}
+
+\subsection{Vorschlag}
+\label{sub:suggestion}
+Optimalerweise gibt der Nutzer eine Suchanfrage ein, zu der ein Inhalt eine sehr hohe Relevanz hat und alle anderen Inhalte eine recht niedrige.
+Sollte dies der Fall sein, so könnte dieser Inhalt in einer Vorschlagsbox über der Ergebnisliste angezeigt werden, damit der Nutzer visuell sieht, dass dies der Inhalt ist, den er höchstwahrscheinlich sucht.
+Eine Berechnung hierfür ist nicht klar definiert, als ersten Versuch wird überprüft, ob der berechnete Score des relevantesten Inhalts mindestens doppelt so groß ist, wie der des nächsten Inhalts.
+Dieses Vorgehen muss aber in der Entwicklung und im produktiven Betrieb weiter geprüft werden, um dieses Vorgehen weiter zu verfeinern.
+
+Eine mögliche Schwachstelle hierbei könnten sehr relevante erste und zweite Inhalte sein, aber die darauf folgenden sehr irrelevant.
+Somit könnten auch beide Inhalte vorgeschlagen werden, was aber aus Gründen der Nutzerfreundlichkeit nur auf einen minimiert wird.
+Dafür müsste die ganze Liste, oder ein Teil z. B. die Top 10, auf die durchschnittliche Relevanz geprüft werden und Inhalte, die sich stark nach oben von diesem Durchschnitt unterscheiden als Vorschläge genommen werden.
 
 
 \section{Planung der Implementation}

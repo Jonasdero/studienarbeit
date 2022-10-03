@@ -44,3 +44,5 @@ Query
 Boosting
 Predigtdatenbank
 RESTFUL
+boosten
+Vorschlagsbox

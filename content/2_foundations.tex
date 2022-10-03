@@ -93,7 +93,6 @@ Inhalte werden anhand von Boostingmechanismen höher oder schlechter bewertet.
 Als Entwickler gibt man hierfür mögliche Textfelder an, auf denen SOLR automatisch ein Textmatching anwendet (\ref{sub:relevanceText}).
 Ebenso ist es möglich eigene Boostingmechanismen zu erstellen, wobei hier dann in Java entwickelt wird.\footnote{Siehe Apache SOLR \cite{solr2022}}
 
-
 \section{Crossload}
 \label{sec:crossload}
 Crossload ist eine deusche Predigtdatenbank, deren Ziel es ist, mit modernen Technologien und einem ansprechendem User Interface (\gls{ui}) den Zugang zu Predigten und anderem christlichen Material zu vereinfachen.
@@ -103,7 +102,7 @@ Zudem gibt es Schnittstellen zu christlichen Verlagen oder Webseiten wie CLV\foo
 
 Technisch ist Crossload wie folgt aufgestellt:
 \begin{itemize}
-  \item \textbf{Frontend:} UI entwickelt mit Angular zum Durchsuchen der Datenbank und direktem Streaming der Predigten
+  \item \textbf{Frontend:} UI entwickelt mit Angular zum Durchsuchen der Datenbank und direktem Streaming der Predigten. Für die Analyse und Statistiken, welche Seiten besucht, welche Inhalte angehört und welche Suchanfragen abgegeben wurden, wird Matomo verwendet. Matomo, ein Open-Source Pendant zu Google Analytics, enthält auch Statistiken zur durchschnittlichen Dauer eines Besuches.\footnote{Siehe Matomo \cite{matomo2022}}
   \item \textbf{Suche:} Auf SOLR basierte REST API mit allen veröffentlichten Inhalten und anderen Metadaten. Wird benutzt, um Last vom redaktionellen Backend zu nehmen.
   \item \textbf{Redaktion:} Aufbereitung und Anlegen von Inhalten verschiedenster Kategorien und anderer Metadaten.
   \begin{itemize}
