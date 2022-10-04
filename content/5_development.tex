@@ -20,13 +20,31 @@ Sie wird angeführt von der gemischten Suchergebnisseite, auf der wir momentan d
 
 Ziel ist es, die gemischte Suchleiste so zu ändern, dass eine große Liste mit allen Kategorien gemischt angezeigt wird.
 Dazu wird die bisherige Implementation wie folgt geändert:
-\begin{enumerate}
-  \item \textbf{REST Suchanfrage:} Anstatt nach Ergebnissen pro Kategorie abzufragen und diese in den einzelnen Sektionen darzustellen, muss eine gesammelte Anfrage an die Such API gesendet werden, die dann nach dem gegebenen Sortierkriterium, in diesem Fall absteigend nach Relevanzscore sortiert zurückgegeben wird. % TODO Query anpassen, Erklärung was umgesetzt wurde und grober Screenshot(s) in Anhang
-  \item \textbf{UI:} In der UI wkrd dann unterschieden werden, ob die gemischten Ergebnisse wie in 1. abgefragt oder die bisherige Liste pro Kategorie angezeigt wird. Dazu werden die bestehenden Angular Komponenten wie folgt umgebaut
-  \begin{itemize}
-    \item   % TODO UI nocheinmal umbauen um generisch zu sein, Screenshot von Codeänderungen, Erklärung was gemacht worden ist.
-  \end{itemize}
-\end{enumerate}
+
+Anstatt nach Ergebnissen pro Kategorie abzufragen und diese in den einzelnen Sektionen darzustellen, muss eine gesammelte Anfrage an die Such API gesendet werden.
+Diese wird nach dem gegebenen Sortierkriterium, in diesem Fall absteigend nach Relevanzscore sortiert von der Such API zurückgegeben.
+Dafür wird zu den vorhandenen Kategorien eine „gemischte“ Kategorie hinzugefügt, bei welcher dann kein Suchfilter mitgegeben wird.
+Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön dargestellt zu bekommen.
+
+\begin{lstlisting}[language=Java, title={Erstellen der gemischten Kategorie \cite{crossloadGitlab2022}}]
+  export const MIXED_RESULTS_OPTION = {
+    category: "mixed",
+    path: RESULTS_BASE_URL + "/gemischt",
+    lastPathSegment: "gemischt",
+    text: "Alle",
+    longText: "",
+  } as const
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java, title={Löschen der Kategorie aus den API Parametern \cite{crossloadGitlab2022}}]
+  if (category === "mixed") {
+    delete url.category
+  }
+
+\end{lstlisting}
+
+% TODO Query anpassen, Erklärung was umgesetzt wurde und grober Screenshot(s) in Anhang
+
 
 % TODO: Crossload Frontend Suchseite nicht in Kategorien, sondern Komplett.
 % TODO: Änderungen zusammenfassen https://gitlab.crossload.org/crossload/frontend/frontend/-/tree/studienarbeit
