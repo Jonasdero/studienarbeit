@@ -26,7 +26,7 @@ Diese wird nach dem gegebenen Sortierkriterium, in diesem Fall absteigend nach R
 Dafür wird zu den vorhandenen Kategorien eine „gemischte“ Kategorie hinzugefügt, bei welcher dann kein Suchfilter mitgegeben wird.
 Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön dargestellt zu bekommen.
 
-\begin{lstlisting}[language=Java, title={Erstellen der gemischten Kategorie \cite{crossloadGitlab2022}}]
+\begin{lstlisting}[language=Java, title={Erstellen der gemischten Kategorie \cite{frontend2022}}]
   export const MIXED_RESULTS_OPTION = {
     category: "mixed",
     path: RESULTS_BASE_URL + "/gemischt",
@@ -36,27 +36,33 @@ Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön
   } as const
 \end{lstlisting}
 
-\begin{lstlisting}[language=Java, title={Löschen der Kategorie aus den API Parametern \cite{crossloadGitlab2022}}]
+\begin{lstlisting}[language=Java, title={Löschen der Kategorie aus den API Parametern \cite{frontend2022}}]
   if (category === "mixed") {
     delete url.category
   }
-
 \end{lstlisting}
 
-% TODO Query anpassen, Erklärung was umgesetzt wurde und grober Screenshot(s) in Anhang
-
-
-% TODO: Crossload Frontend Suchseite nicht in Kategorien, sondern Komplett.
-% TODO: Änderungen zusammenfassen https://gitlab.crossload.org/crossload/frontend/frontend/-/tree/studienarbeit
-
+Das Ergebnis zeigt eine zusammengeführte Liste, die komplett nach Relevanz sortiert ist (\ref{fig:crossloadSucheNeu}).
 
 \section{Schlagwortabgleich}
 \label{sec:devKeywords}
 
-% TODO Create configurable Java Parameters mit ausgearbeiteten Schlagwörtern
-% TODO For each configuration: Search for Keywords in Search Term
-% TODO If found, boost Contents with Category
+Für den Schlagwortabgleich werden die Synonyme in Java konfiguriert.
+Dazu wird eine Enumeration erstellt, die eine Liste der Synonyme enthält (\ref{annex:sourceCode}).
+Durch diese Enumeration können Änderungen leicht eingebaut werden und durch die vorhandene \gls{ci}/\gls{cd} Pipeline direkt in die produktive Umgebung eingespielt werden.
+Somit wäre der Nachteil der fest definierten Synonyme ausgeglichen, da Korrekturen schnell eingespielt werden können.
 
+Eine Alternative zur Konfiguration in Java wäre eine ausgelagerte \gls{json} Datei.
+Da diese aber genau wie die Java Enumeration in die produktive Umgebung gelangen würde, wäre kein großer Nutzen dabei.
+Der Unterschied dabei ist aber die Komplexität beim Einlesen der Datei und die fehlende Typisierung in der JSON Datei.
+Aus diesem Grund wurde sich für die Enumeration entschieden.
+
+Der nächste Schritt ist der Vergleich des Suchterms mit den verfügbaren Synonymen.
+Dazu wird überprüft, ob dieser ein Synonym komplett enthält.
+Damit sind auch Sonderfälle wie der Plural oder Beugungen enthalten, da für mögliche Spezialfälle bereits Synonyme in die Listen eingefügt wurden.
+
+Sollte ein Schlagwort gefunden werden, so werden Inhalte der Kategorie geboostet.
+Für Predigten wird hierbei noch für den Spezialfall der Predigt mit Video unterschieden, bei nur Predigten mit Video geboostet werden und andere Predigten keine besondere Behandlung erfahren.
 
 \section{Vorschläge für weitere Navigation}
 \label{sec:devSuggestions}

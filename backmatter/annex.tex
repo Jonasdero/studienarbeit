@@ -3,35 +3,106 @@
 \renewcommand{\thechapter}{\Alph{chapter}}
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\Roman{subsection}}
-
+\renewcommand\floatpagefraction{0.1}
+\clearpage
 \chapter{Anhang}
 \label{appendix:annex}
 
 \section{Bilder}
-\begin{wrapfigure}{l}{\textwidth}
+\label{annex:images}
+
+\subsection{Einleitung}
+
+\begin{figure}[ht!]
   \begin{centering}
     \includegraphics[width=.75\textwidth]{figures/appendix/werbeumsatz.png}
     \caption{Werbeumsätze Google Websites \cite{alphabet2022}}
     \label{fig:werbeumsatz}
   \end{centering}
-\end{wrapfigure}
+\end{figure}
 
-\begin{wrapfigure}{r}{\textwidth}
+\begin{figure}[ht!]
   \begin{centering}
     \includegraphics[width=.75\textwidth]{figures/appendix/marketshare.png}
     \caption{Marktanteil Google \cite{netmarketshare2022}}
     \label{fig:marketshare}
   \end{centering}
-\end{wrapfigure}
+\end{figure}
 
-\begin{wrapfigure}{r}{\textwidth}
+\begin{figure}[ht!]
   \begin{centering}
     \includegraphics[width=.8\textwidth]{figures/appendix/crossloadSuche.png}
-    \caption{Crossload \cite{pfleiderer2022}}
+    \caption{Aktuelle Crossload Suche \cite{pfleiderer2022}}
     \label{fig:crossloadSuche}
   \end{centering}
-\end{wrapfigure}
+\end{figure}
 
+\clearpage
+\subsection{Entwicklung}
+
+\begin{figure}[ht!]
+  \begin{centering}
+    \includegraphics[width=.8\textwidth]{figures/appendix/crossloadSucheNeu.png}
+    \caption{Überarbeitete Crossload Suche \cite{pfleiderer2022}}
+    \label{fig:crossloadSucheNeu}
+  \end{centering}
+\end{figure}
+
+\clearpage
+\section{Source Code}
+\label{annex:sourceCode}
+
+\begin{lstlisting}[language=Java, title={Enumeration der verschiedenen Kategorien \cite{frontend2022}}]
+  public enum SermonCategory {
+    VIDEO("sermon", Arrays.asList("Video", "Film", "Stream", "Live", "Livestream"), true),
+    SERMON("sermon", Arrays.asList("Predigt", "Vortrag", "Mahnwort"), false),
+    BOOK("book", Arrays.asList("Buch", "Bücher", "Taschenbuch", "Sammelband", "Reader", "Druck", "Bestseller"), false),
+    PICTURE("picture", Arrays.asList("Bild", "Darstellung", "Zeichnung", "Aufnahme", "Foto", "Fotografie"), false),
+    MUSIC("music", Arrays.asList("Song", "Melodie", "Hymne", "Stück", "Gesang", "Klavier", "Musik", "Orchester"), false),
+    AUDIOBOOK("audio", Arrays.asList("Hörbuch", "Hörbücher", "Audiobook"), false),
+    OTHER("other", Arrays.asList("Sonstige", "Andere"), false);
+
+    private String category;
+    private Boolean hasVideo;
+    private List<String> synonyms;
+
+    public SermonCategory(String category, List<String> synonyms, Boolean hasVideo) {
+      setCategory(category);
+      setSynonyms(synonyms);
+      setHasVideo(hasVideo);
+    }
+
+    public List<String> getSynonyms() {
+      return synonyms;
+    }
+
+    public void setSynonyms(List<String> synonyms) {
+      if(Objects.isNull(getSynonyms())) {
+        this.synonyms = new List<>();
+      }
+      else {
+        this.synonyms = synonyms;
+      }
+    }
+
+    public String getCategory() {
+      return category;
+    }
+
+    public void setCategory(String category) {
+      this.category = category;
+    }
+
+    public Boolean hasVideo() {
+      return hasVideo;
+    }
+
+    public void setHasVideo(Boolean hasVideo) {
+      this.hasVideo = hasVideo;
+    }
+  }
+\end{lstlisting}
+\label{code:SermonCategory}
 
 % 2 Images on one page
 % \begin{figure}
