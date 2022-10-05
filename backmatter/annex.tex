@@ -53,8 +53,17 @@
 \label{annex:sourceCode}
 
 \begin{lstlisting}[language=Java, title={Enumeration der verschiedenen Kategorien \cite{frontend2022}}]
+  package org.biblepool.search.dto.sermon;
+
+  import java.util.ArrayList;
+  import java.util.Arrays;
+  import java.util.List;
+  import java.util.Objects;
+  import java.util.regex.Pattern;
+  import java.util.stream.Collectors;
+
   public enum SermonCategory {
-    VIDEO("sermon", Arrays.asList("Video", "Film", "Stream", "Live", "Livestream"), true),
+    VIDEO("sermon", Arrays.asList("Video", "Film", "Stream", "Live"), true),
     SERMON("sermon", Arrays.asList("Predigt", "Vortrag", "Mahnwort"), false),
     BOOK("book", Arrays.asList("Buch", "Bücher", "Taschenbuch", "Sammelband", "Reader", "Druck", "Bestseller"), false),
     PICTURE("picture", Arrays.asList("Bild", "Darstellung", "Zeichnung", "Aufnahme", "Foto", "Fotografie"), false),
@@ -62,12 +71,17 @@
     AUDIOBOOK("audio", Arrays.asList("Hörbuch", "Hörbücher", "Audiobook"), false),
     OTHER("other", Arrays.asList("Sonstige", "Andere"), false);
 
-    private String category;
+    private String id;
     private Boolean hasVideo;
-    private List<String> synonyms;
+    private List<String> synonyms = new ArrayList<>();
+    private Pattern pattern;
 
-    public SermonCategory(String category, List<String> synonyms, Boolean hasVideo) {
-      setCategory(category);
+    public static List<SermonCategory> getAllCategories() {
+      return Arrays.asList(SermonCategory.values());
+    }
+
+    private SermonCategory(String id, List<String> synonyms, Boolean hasVideo) {
+      setId(id);
       setSynonyms(synonyms);
       setHasVideo(hasVideo);
     }
@@ -78,19 +92,19 @@
 
     public void setSynonyms(List<String> synonyms) {
       if(Objects.isNull(getSynonyms())) {
-        this.synonyms = new List<>();
+        this.synonyms = new ArrayList<>();
       }
       else {
         this.synonyms = synonyms;
       }
     }
 
-    public String getCategory() {
-      return category;
+    public String getId() {
+      return id;
     }
 
-    public void setCategory(String category) {
-      this.category = category;
+    public void setId(String id) {
+      this.id = id;
     }
 
     public Boolean hasVideo() {
@@ -100,7 +114,17 @@
     public void setHasVideo(Boolean hasVideo) {
       this.hasVideo = hasVideo;
     }
+
+    public void setPattern() {
+      String regex = synonyms.stream().collect(Collectors.joining("|"));
+      pattern = Pattern.compile("(" + regex + ")", Pattern.CASE_INSENSITIVE);
+    }
+
+    public boolean hasCategory(String term) {
+      return pattern.matcher(term).matches();
+    }
   }
+
 \end{lstlisting}
 \label{code:SermonCategory}
 

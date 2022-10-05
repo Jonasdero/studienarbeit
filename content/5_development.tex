@@ -53,7 +53,7 @@ Durch diese Enumeration können Änderungen leicht eingebaut werden und durch di
 Somit wäre der Nachteil der fest definierten Synonyme ausgeglichen, da Korrekturen schnell eingespielt werden können.
 
 Eine Alternative zur Konfiguration in Java wäre eine ausgelagerte \gls{json} Datei.
-Da diese aber genau wie die Java Enumeration, durch die CI/CD Pipeline. in die produktive Umgebung gelangen würde, wäre kein großer Nutzen dabei, eine JSON Datei der Enumeration vorzuziehen.
+Da diese aber genau wie die Java Enumeration, durch die CI/CD Pipeline, in die produktive Umgebung gelangen würde, wäre kein großer Nutzen dabei, eine JSON Datei der Enumeration vorzuziehen.
 Der Unterschied dabei ist aber die Komplexität beim Einlesen der Datei und die fehlende Typisierung in der JSON Datei.
 Aus diesem Grund wurde sich für die Enumeration entschieden.
 
@@ -61,8 +61,31 @@ Der nächste Schritt ist der Vergleich des Suchterms mit den verfügbaren Synony
 Dazu wird überprüft, ob dieser ein Synonym komplett enthält.
 Damit sind auch Sonderfälle wie der Plural oder Beugungen enthalten, da für mögliche Spezialfälle bereits Synonyme in die Listen eingefügt wurden.
 
-Sollte ein Schlagwort gefunden werden, so werden Inhalte der Kategorie geboostet.
+Für die Überprüfung werden Java Streams benutzt.
+Diese machen den Source Code lesbarer und kleiner, da viele Kontrollstrukturen wegfallen.
+Mithilfe der vorhandenen Klasse CrossloadCriteriaBuilder werden alle Inhalte der gefundenen Kategorie geboostet.
 Für Predigten wird hierbei noch für den Spezialfall der Predigt mit Video unterschieden, bei nur Predigten mit Video geboostet werden und andere Predigten keine besondere Behandlung erfahren.
+
+\begin{lstlisting}[language=Java, title={Code für Überprüfung und Boosten der Kategorien. \cite{solr-search2022}}]
+  private void addCategoryBoost(String searchTerm, SolrQuery query) {
+    SermonCategory.getAllCategories()
+      .stream()
+      .filter(category -> category.hasCategory(searchTerm))
+      .forEach(category ->  {
+        CrossloadCriteriaBuilder instance = CrossloadCriteriaBuilder.getInstance();
+        // Boost für Inhalte mit Videos, falls ein Videosynonym gefunden.
+        if(SermonCategory.VIDEO.equals(category)) {
+          instance.addCriteria(SchemaField.HAS_PRIMARY_VIDEO, "true", 75);
+          query.addCriteria(instance);
+        }
+        else {
+          // Boosten der gefundenen Kategorie
+          instance.addCriteria(SchemaField.MAIN_CAT, category.getId(), 3);
+          query.addCriteria(instance);
+        }
+      });
+  }
+\end{lstlisting}
 
 \section{Vorschläge für weitere Navigation}
 \label{sec:devSuggestions}
