@@ -37,6 +37,25 @@
   \end{centering}
 \end{figure}
 
+% 2 Images on one page
+% \begin{figure}
+%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
+%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
+%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
+%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
+% \end{figure}
+
+% 1 Images per page
+% \begin{figure}
+%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
+%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
+% \begin{figure}
+% \end{figure}
+%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
+%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
+% \end{figure}
+
+
 \clearpage
 \subsection{Entwicklung}
 
@@ -52,7 +71,7 @@
 \section{Source Code}
 \label{annex:sourceCode}
 
-\begin{lstlisting}[language=Java, title={Enumeration der verschiedenen Kategorien \cite{frontend2022}}]
+\begin{lstlisting}[language=Java, label=code:SermonCategory, title={Enumeration der verschiedenen Kategorien \cite{frontend2022}}]
   package org.biblepool.search.dto.sermon;
 
   import java.util.ArrayList;
@@ -126,22 +145,74 @@
   }
 
 \end{lstlisting}
-\label{code:SermonCategory}
 
-% 2 Images on one page
-% \begin{figure}
-%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
-%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
-%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
-%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
-% \end{figure}
+\clearpage
 
-% 1 Images per page
-% \begin{figure}
-%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
-%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
-% \begin{figure}
-% \end{figure}
-%   \includegraphics[width=\textwidth]{figures/appendix/IMAGE.png}
-%   \caption{\label{fig:IMAGE} TITLE \cite{CITATION}}
-% \end{figure}
+\begin{lstlisting}[language=Java, label=code:SolrResponse, title={Vorschlag in der zurückgegebenen Antwort \cite{solr-search2022}}]
+  package org.biblepool.search.business.paging;
+
+  import org.biblepool.schema.api.sermon.dto.Sermon;
+
+  import java.util.List;
+  public class Page {
+
+    private Meta meta;
+    private List<Sermon> content;
+    private Sermon suggestion;
+
+    public Sermon parseSuggestion(List<Sermon> mostRelevant) {
+      // Case 0: If there is only one content in the list, return that as suggestion
+      boolean onlyOneElement = mostRelevant.size() == 1;
+
+      // Case 1: Score of the first element is at least twice as much of the second score
+      boolean biggerThanDoubleTheScore = mostRelevant.size() > 2 && mostRelevant.get(0).getScore() >= 2 * mostRelevant.get(1).getScore();
+
+      if(onlyOneElement || biggerThanDoubleTheScore) {
+        return mostRelevant.get(0);
+      }
+
+      // Case 2: Get the average of the most relevant sermons and check if the first has at least twice as much of that
+      if(!mostRelevant.isEmpty()) {
+        Float average = (float) mostRelevant
+          .stream()
+          .mapToDouble(sermon -> sermon.getScore())
+          .summaryStatistics()
+          .getAverage();
+
+        if(mostRelevant.get(0).getScore() >= 2 * average) {
+          return mostRelevant.get(0);
+        }
+      }
+
+      return null;
+    }
+
+    public Meta getMeta() {
+      return meta;
+    }
+
+    public void setMeta(Meta meta) {
+      this.meta = meta;
+    }
+
+    public List<Sermon> getContent() {
+      return content;
+    }
+
+    public void setContent(List<Sermon> content) {
+      this.content = content;
+    }
+
+    public Sermon getSuggestion() {
+      return suggestion;
+    }
+
+    public void setSuggestion(Sermon suggestion) {
+      this.suggestion = suggestion;
+    }
+  }
+\end{lstlisting}
+
+% \begin{lstlisting}[language=Java, label=code:, title={ \cite{}}]
+
+% \end{lstlisting}

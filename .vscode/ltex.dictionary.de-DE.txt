@@ -46,3 +46,6 @@ Predigtdatenbank
 RESTFUL
 boosten
 Vorschlagsbox
+CrossloadCriteriaBuilder
+Vorschlagsobjekt
+suggestion
