@@ -1,5 +1,7 @@
 # Studienarbeit
 
+Studienarbeit im Rahmen des berufsbegleiteten Masters an der OHM Professional School (TH OHM) bei Prof. Dr. Hans-Georg Hopf.
+
 ## Kurzdarstellung
 Das Ziel der vorliegenden Studienarbeit ist es, eine bestehende Datenbank mit multimedialen Inhalten möglichst effizient nach unterschiedlichen Kriterien zu durchsuchen.
 Suchergebnisse sollen nach bestimmten Kriterien gewichtet, gefiltert und sortiert werden. Vorschläge für eine weiterführende Navigation auf der Suchergebnisseite sollen angeboten werden, Suchergebnisse sollen dazu nach Kontext und Wahrscheinlichkeiten gewichtet angezeigt werden.
