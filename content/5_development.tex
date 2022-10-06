@@ -75,12 +75,12 @@ Für Predigten wird hierbei noch für den Spezialfall der Predigt mit Video unte
       .filter(category -> category.hasCategory(searchTerm))
       .forEach(category ->  {
         CrossloadCriteriaBuilder instance = CrossloadCriteriaBuilder.getInstance();
-        // Boost für Inhalte mit Videos, falls ein Videosynonym gefunden.
         if(SermonCategory.VIDEO.equals(category)) {
+          // Boost for Sermons with video
           instance.addCriteria(SchemaField.HAS_PRIMARY_VIDEO, "true", 75);
         }
         else {
-          // Boosten der gefundenen Kategorie
+          // Boost of found category
           instance.addCriteria(SchemaField.MAIN_CAT, category.getId(), 3);
         }
         query.addCriteria(instance);
