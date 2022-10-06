@@ -81,7 +81,7 @@ Für Predigten wird hierbei noch für den Spezialfall der Predigt mit Video unte
         }
         else {
           // Boost of found category
-          instance.addCriteria(SchemaField.MAIN_CAT, category.getId(), 3);
+          instance.addCriteria(SchemaField.MAIN_CAT, category.getId(), 75);
         }
         query.addCriteria(instance);
       });
@@ -106,7 +106,7 @@ Dieser wäre von Seite pro Seite unterschiedlich.
 Mit SOLR ist es allerdings möglich, eine Query mit einem Ergebnis und den gleichen Suchparametern abzugeben, die nur die ersten 10 Elemente einer nach dem Relevanzscore absteigend sortierten Liste zurückgibt.
 
 \clearpage
-\begin{lstlisting}[language=Java, label=code:SOLRSuggestionQuery, title={SOLR Query für die Top 10 Ergebnisse, absteigend sortiert nach Relevanz \cite{solr-search2022}}]
+\begin{lstlisting}[language=Java, label={code:SOLRSuggestionQuery}, title={SOLR Query für die Top 10 Ergebnisse, absteigend sortiert nach Relevanz \cite{solr-search2022}}]
   final JsonQueryRequest suggestionQuery = new JsonQueryRequest(params)
     .withParam("q", solrQuery.getQuery())
     .withParam("fl", "*, [child limit=100]")
@@ -117,7 +117,7 @@ Mit SOLR ist es allerdings möglich, eine Query mit einem Ergebnis und den gleic
 
 Diese gefundenen Ergebnisse werden dann untersucht, um einen Vorschlag zu finden. Das Ergebnis (ein Inhalt oder \emph{null}) wird dann dem zurückgegebenen Ergebnis mitgegeben.
 
-\begin{lstlisting}[language=Java, label=code:parseSuggestion, title={Relevanteste Inhalte nach einem Vorschlag durchsuchen \cite{solr-search2022}}]
+\begin{lstlisting}[language=Java, label={code:parseSuggestion}, title={Relevanteste Inhalte nach einem Vorschlag durchsuchen \cite{solr-search2022}}]
   public Sermon parseSuggestion(List<Sermon> mostRelevant) {
     // Case 0: If there is only one content in the list, return that as suggestion
     boolean onlyOneElement = mostRelevant.size() == 1;
@@ -161,7 +161,7 @@ Für die Anzeige wird dann die bereits verfügbare Liste der gefundenen Inhalte 
 \end{figure}
 
 
-\begin{lstlisting}[language=Java, label=code:suggestionRow, title={Code für Anzeige des Vorschlage \cite{frontend2022}}]
+\begin{lstlisting}[language=Java, label={code:suggestionRow}, title={Code für Anzeige des Vorschlage \cite{frontend2022}}]
   <div role="rowgroup" attr.data-cy="category_suggestion">
     <app-content-list-header text="Vorschlag"></app-content-list-header>
 
