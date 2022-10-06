@@ -1,26 +1,13 @@
-# Thesis Template
+# Studienarbeit
 
-Basic template for reports, bachelor and master theses at the [Technische Hochschule Nürnberg Georg Simon Ohm](https://www.th-nuernberg.de/).
-It is set up to be printed as a book including a coverpage.
+## Kurzdarstellung
+Das Ziel der vorliegenden Studienarbeit ist es, eine bestehende Datenbank mit multimedialen Inhalten möglichst effizient nach unterschiedlichen Kriterien zu durchsuchen.
+Suchergebnisse sollen nach bestimmten Kriterien gewichtet, gefiltert und sortiert werden. Vorschläge für eine weiterführende Navigation auf der Suchergebnisseite sollen angeboten werden, Suchergebnisse sollen dazu nach Kontext und Wahrscheinlichkeiten gewichtet angezeigt werden.
+Das theoretische Fundament dieser Arbeit stellt die wissenschaftliche Betrachtung der Methoden zur Bewertung der Relevanz von Suchergebnissen dar. Die Arbeit untersucht die Möglichkeit, einen Suchbegriff so zu analysieren, dass ein Nutzer die bestmögliche Ergebnisliste bzw. zielgerichtete weiterführende Navigationsmöglichkeiten erhält.
+Die bestehende Anwendung „Crossload“ wird vorgestellt, um dem Leser einen Kontext zu bieten, in der sich die Entwicklung bewegt.
 
-
-## Important!
-
-You need to download, fill and save-as-pdf the official [statement and copyright form](https://intern.ohmportal.de/fileadmin/Gelenkte_Doks/Abt/SZS/SB/SB_0050_FO_Pruefungsrechtliche_Erklaerung_und_Erklaerung_zur_Veroeffentlichung_der_Abschlussarbeit_public.pdf), in its most recent version.
-It will be included in the final `thesis.pdf`.
-
-
-## A few tips for writing your thesis:
-
-- Create a branch for your thesis; this allows you to easily sync with upstream (this repository).
-- Disable automatic hard line wrap (with newlines); use soft wrap instead. [(What's that about?)](https://stackoverflow.com/questions/319925/difference-between-hard-wrap-and-soft-wrap)
-- Write one sentence per line -- this makes for nice diffs in git.
-- For capitalization of headlines etc., follow the [IEEE Style Manual](https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/)
-- Use UTF-8 encoding on your files to make special characters wörk.
-- Keep your literature up to date -- add references to your bib file as you read them.
-
-
-## Other resources regarding your thesis
-
-- [Informationen und Vorlagen](https://intern.ohmportal.de/institutionen/fakultaeten/informatik/studierende/infos-zum-studium/abschlussarbeiten/informationen-und-vorlagen/page.html) (German, Ohm intranet)
-- [Wie schreibe ich eine Abschlussarbeit](https://www.in.th-nuernberg.de/Professors/Weber/Abschlussarbeit%20Methodik.pdf) by Prof. Dr. Rainer Weber (German, Ohm intranet).
+## Abstract
+The goal of this student research project is to search an existing database with multimedia content as efficiently as possible according to various criteria.
+Search results are to be weighted, filtered, and sorted according to certain criteria. Suggestions for further navigation on the search results page are to be offered, and search results are to be displayed weighted according to context and probabilities.
+The theoretical foundation of this work is the scientific consideration of methods for evaluating the relevance of search results. The work examines the possibility of analyzing a search term in such a way that a user receives the best possible list of results or targeted further navigation options.
+The existing application „Crossload“ is presented to provide the reader with a context in which the development takes place.
