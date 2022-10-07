@@ -6,24 +6,20 @@ Im folgenden Kapitel sollen alle wesentlichen Funktionen der Erweiterung dargest
 
 \section{Vorgehensweise}
 
-Zur Erfassung der Anforderungen bzw. Requirements Engineering werden User Stories benutzt.
-
-Diese sind bekannt aus agilen Softwareentwicklungsmodellen, wie z. B. Scrum, entstanden aber durch praktische Erfahrungen in der Softwareentwicklung.
+Zur Erfassung der Anforderungen bzw. Requirements Engineering werden User Stories benutzt. Diese sind bekannt aus agilen Softwareentwicklungsmodellen, wie z. B. Scrum, entstanden aber durch praktische Erfahrungen in der Softwareentwicklung.
 Konzeptioniert wurden sie von Dr. Ivar Jacobsen\footnote{Vgl. Jacobson, Spence, Kerr 2016 \cite{jacobson2016}} und Ron Jeffries\footnote{Vgl. Ron Jeffries \cite{jeffries2022}}.
 Mithilfe einfacher Sprache wird aus der Sicht des Stakeholders das Ziel einer Story in einem kurzen Satz zusammengefasst.
 Anschließend wird dieses Ziel begründet, um die Wichtigkeit und Existenzberechtigung der Story zu begründen.
 User Stories sind dabei auch Anforderungen nach dem SMART Prinzip\footnote{Vgl. Witte 2019a, S. 67 \cite{witte2016}}, da diese nur einen sehr kleinen abgesteckten Teilbereich einer Funktionalität enthalten.
-Dadurch sind sie einfacher schätzbar, umsetzbar und testbar.
-
-Anhand der ermittelten User Stories werden nach der Entwicklung Akzeptanztests durchgeführt, um den Erfolg des Endproduktes objektiv zu bewerten.
+Dadurch sind sie einfacher schätzbar, umsetzbar und testbar. Anhand der ermittelten User Stories werden nach der Entwicklung Akzeptanztests durchgeführt, um den Erfolg des Endproduktes objektiv zu bewerten.
 
 \section{User Stories}
 
 Die Anforderungen umfassen alle Aktionen, welche der Nutzer in der Anwendung durchführen will.
-Ziel aller Anforderungen ist die übergreifende Suche über mehrere Kategorien nach effizient nach mehreren Kriterien zu durchsuchen und zu bewerten.
+Ziel aller Anforderungen ist die übergreifende Suche über mehrere Kategorien effizient anhand mehrerer Kriterien zu durchsuchen und zu bewerten.
 Anhand dieses Ziels werden User Stories entwickelt, in denen ein Nutzer und andere Personen ihre Anforderungen an das zu entwickelnde Produkt stellen.
 
-Nichtfunktionale Anforderungen werden bei dieser Anforderungserhebung nicht beachtet, da es sich hierbei um die Erweiterung einer bestehenden \gls{api} handelt und Punkte wie Benutzerfreundlichkeit und User Experience hierbei wenig relevant sind, beziehungsweise das Entwicklungsumfeld durch die bereits bestehende Anwendung vorgegeben ist.
+Nichtfunktionale Anforderungen werden bei dieser Anforderungserhebung nicht beachtet, da es sich hierbei um die Erweiterung einer bestehenden \gls{api} handelt und Aspekte wie Benutzerfreundlichkeit und User Experience hierbei wenig relevant sind, bzw. das Entwicklungsumfeld durch die bereits bestehende Anwendung vorgegeben ist.
 Die Priorität der einzelnen User Stories ergibt sich aus der unten gegebenen Reihenfolge.
 
 \pagebreak
@@ -35,8 +31,8 @@ Ich, als Benutzer, will …
       \item[…] der Titel eines Buches wird „relativ“ genau als Suchbegriff eingegeben, folglich wird dieses Buch stärker gewichtet.
       \item[…] der Suchbegriff enthält den Term „Video“, folglich werden alle Videos priorisiert.
     \end{itemize}
-  \item[…] die erhaltenen Suchbegriffe anhand des errechneten Gewichts absteigend sortiert zurückgegeben werden, damit das relevanteste Suchergebnis auf der Suchergebnisseite ganz oben steht.
-  \item[…] ein mit hoher Wahrscheinlichkeit gesuchte Suchergebnis als Vorschlag angezeigt bekommen, damit auf der Suchergebnisseite eine schnelle Navigation zu diesem Ergebnis möglich ist.
-    Dabei soll nur ein Vorschlag angezeigt werden, wenn er der einzige mit einer hohen Wahrscheinlichkeit, in der Suchergebnisliste vorhanden durch das vorher errechnete Gewicht, und dieses Gewicht eine gewisse Schwelle überschreitet.
-    Dadurch sollen verhindert werden, dass von ähnlich relevante Suchergebnisse nur eines vorgeschlagen wird und ein Suchergebnis vorgeschlagen wird, welches für das gegebene Suchkriterium irrelevant ist.
+  \item[…] die erhaltenen Suchbegriffe anhand des errechneten Gewichts absteigend sortiert zurückgegeben bekommen, damit das relevanteste Suchergebnis auf der Suchergebnisseite ganz oben steht.
+  \item[…] ein mit hoher Wahrscheinlichkeit gesuchtes Suchergebnis als Vorschlag angezeigt bekommen, damit auf der Suchergebnisseite eine schnelle Navigation zu diesem Ergebnis möglich ist.
+    Dabei soll ein Inhalt nur vorgeschlagen werden, wenn dessen Relevanz um einiges höher ist, als das der anderen gefundenen Ergebnisse.
+    Dies verhindert, dass von ähnlich relevanten Suchergebnissen eines ohne Berechtigung hervorgehoben wird, auch wenn es das Relevanteste in dieser Liste ist.
 \end{itemize}

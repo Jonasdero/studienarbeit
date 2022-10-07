@@ -1,14 +1,17 @@
 \chapter{Entwicklung des Prototyps}
 \label{ch:development}
 
-Die Umsetzung des Prototyps erfolgt in mehreren Schritten. Zu Beginn wird wie in \ref{sub:unifiedList} beschrieben, die Liste aller Ergebnisse zusammengeführt und absteigend nach der Relevanz sortiert. Anschließend wird der Schlagwortabgleich (\ref{sub:keyword}) implementiert, indem konfigurierbar die Liste der möglichen Synonyme mit dem Suchterm abgeglichen wird und die Ergebnisse geboostet werden, wenn der Suchterm ein Synonym enthält. Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag wie in \ref{sub:suggestion} beschrieben dem Ergebnis hinzugefügt.
+Die Umsetzung des Prototyps erfolgt in mehreren Schritten.
+Zu Beginn wird wie in \ref{sub:unifiedList} beschrieben, die Liste aller Ergebnisse zusammengeführt und absteigend nach der Relevanz sortiert.
+Anschließend wird der Schlagwortabgleich (\ref{sub:keyword}) implementiert, indem die Liste der möglichen Synonyme mit dem Suchterm abgeglichen wird und die Ergebnisse geboostet werden, wenn der Suchterm ein Synonym enthält.
+Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag wie in \ref{sub:suggestion} beschrieben dem Ergebnis hinzugefügt.
 
 \section{Zusammengeführte Liste}
 \label{sec:devUnifiedList}
 
 Für die Entwicklung der zusammengeführten Liste im Crossload Frontend ist wichtig, dass die schon implementierte Funktionalität der Suche nach Kategorien nach der Entwicklung immer noch möglich sein muss.
 Dazu finden sich auf der Suchergebnisseite mehrere Tabs, bei denen auch eine Suche innerhalb von Kategorien möglich ist.
-Sie wird angeführt von der gemischten Suchergebnisseite, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen (\ref{fig:crossloadSuche}).
+Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen (\ref{fig:crossloadSuche}).
 
 \begin{figure}[h]
   \begin{centering}
@@ -59,7 +62,7 @@ Der Unterschied dabei ist aber die Komplexität beim Einlesen der Datei und die 
 Aus diesem Grund wurde sich für die Enumeration entschieden.
 
 Der nächste Schritt ist der Vergleich des Suchterms mit den verfügbaren Synonymen.
-Dazu wird überprüft, ob dieser ein Synonym komplett enthält.
+Dazu wird überprüft, ob dieser ein Synonym vollständig enthält.
 Damit sind auch Sonderfälle wie der Plural oder Beugungen enthalten, da für mögliche Spezialfälle bereits Synonyme in die Listen eingefügt wurden.
 
 Für die Überprüfung werden Java Streams benutzt.
@@ -96,11 +99,11 @@ Durch das hier verfügbare Skript werden nun die Kategorien anhand des gegebenen
 Für die Vorschläge sind Anpassungen sowohl in Suche, um den Vorschlag herauszuarbeiten, als auch im Frontend, um den Vorschlag anzuzeigen, notwendig.
 
 In der Such API wird hierfür zunächst die zurückgegebene Antwort um ein Vorschlagsobjekt ("suggestion") erweitert (\ref{code:SolrResponse}).
-In diesem Objekt wird für das Frontend entweder die vorgeschlagene Predigt stehen, oder kein Wert, wenn es keinen Vorschlag gibt.
+In diesem Objekt wird für das Frontend entweder die vorgeschlagene Predigt stehen oder kein Wert, wenn es keinen Vorschlag gibt.
 
 Um einen Vorschlag zu finden, müssen die relevantesten Inhalte nach den bereits erwähnten Kriterien untersucht werden (\ref{sub:suggestion}).
 Im derzeitigen Code wird immer nur eine Suchseite mit bis zu 20 Ergebnissen zurückgegeben.
-Wenn diese benutzt werden, würde um das relevanteste Ergebnis zu finden, würde man maximal einen Vorschlag pro Seite bekommen.
+Wenn diese benutzt werden, um das relevanteste Ergebnis zu finden, würde man maximal einen Vorschlag pro Seite bekommen.
 Dieser wäre von Seite pro Seite unterschiedlich.
 
 Mit SOLR ist es allerdings möglich, eine Query mit einem Ergebnis und den gleichen Suchparametern abzugeben, die nur die ersten 10 Elemente einer nach dem Relevanzscore absteigend sortierten Liste zurückgibt.
@@ -149,7 +152,7 @@ Diese gefundenen Ergebnisse werden dann untersucht, um einen Vorschlag zu finden
 
 \clearpage
 Im Frontend müssen nun ebenso die Änderungen in den verschiedenen Typen gemacht werden, damit die Vorschläge auch ausgelesen werden können.
-Für die Anzeige wird dann die bereits verfügbare Liste der gefundenen Inhalte verwendet um doppelten Code zu minimieren und den Vorschlag direkt anzuzeigen.
+Für die Anzeige wird dann die bereits verfügbare Liste der gefundenen Inhalte verwendet, um doppelten Code zu minimieren und den Vorschlag direkt anzuzeigen.
 
 
 \begin{figure}[h]

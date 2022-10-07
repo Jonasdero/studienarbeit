@@ -4,21 +4,21 @@
 \section{Relevanz}
 
 Relevanz ist allgemein beschrieben eine Beziehung zwischen einem Individuum, dem zeitlichen Rahmen, in welchem dieses eine Information benötigt und einer beliebigen Information.\footnote{Vgl. Bookstein S. 1 \cite{bookstein2007}}
-Das bedeutet, dass Relevanz von Person zu Person unterschiedlich ist, da zum einen diverse Informationen nur zu einer bestimmten Zeit notwendig bzw. wichtig sind und der Kontext der benötigten Information sich ständig ändert.
+Das bedeutet, dass Relevanz von Person zu Person unterschiedlich ist, da zum einen diverse Informationen nur zu einer bestimmten Zeit notwendig bzw. wichtig sind und zum anderen der Kontext der benötigten Information sich ständig ändert.
 
-Um zu verstehen, woher die Relevanz stammt bzw. in der Informationstechnik verwendet wird, ist es wichtig die Gewinnung von Informationen aus Objekten (\emph{Information Retrieval}) zu verstehen.
-Dieser Teil der Wissenschaft beschäftigt sich mit dem präzisen Abruf von Informationen, um den das Informationsbedürfnis (\emph{Information need}) eines Nutzers zu stillen.
-Das Informationsbedürfnis wird hierbei von einem idealen Inhalt gestillt, stellt also die Spezifikation eines idealen Inhalts dar. Diese Spezifikation geht aber über den reinen textuellen Inhalt der Suche hinaus. Die Relevanz ist dabei die Aktivität bzw. Praxis um diesen idealen Inhalt zu finden.\footnote{Vgl. Manning, Raghavan, Schütze \cite{manning2008}}
+Um zu verstehen, woher die Relevanz stammt bzw. in der Informationstechnik verwendet wird, ist es wichtig, die Gewinnung von Informationen aus Objekten (\emph{Information Retrieval}) zu verstehen.
+Dieser Teil der Wissenschaft beschäftigt sich mit dem präzisen Abruf von Informationen, um das Informationsbedürfnis (\emph{Information need}) eines Nutzers zu stillen.
+Der Bedarf nach einem Bedürfnis wird hierbei von einem idealen Inhalt gestillt, stellt also die Spezifikation eines idealen Inhalts dar. Diese Spezifikation geht aber über den reinen textuellen Inhalt der Suche hinaus. Die Relevanz ist dabei die Aktivität bzw. Praxis um diesen idealen Inhalt zu finden.\footnote{Vgl. Manning, Raghavan, Schütze \cite{manning2008}}
 
 \section{Methoden zur Bewertung von Relevanz}
 
-Eine \gls{searchEngine} gibt nach Anfrage Webseiten sortiert nach der Relevanz der Ergebnisse abhängig zum gegebenen Suchbegriff des Nutzers.
+Eine \gls{searchEngine} gibt nach einer Suchanfrage Ergebnisse standardmäßig sortiert nach der Relevanz der Ergebnisse abhängig zum gegebenen Suchbegriff des Nutzers zurück.
 Die Schwierigkeit dabei ist die Bestimmung der Relevanz für eine beliebige Website.
 Die dafür genutzten Funktionen und Methoden werden allerdings von den Unternehmen geheim gehalten, um einen Missbrauch ihrer \gls{searchEngine} zu verhindern.
 Dennoch sind die am häufigsten genutzten Merkmale bekannt und in einigen wissenschaftlichen Arbeiten untersucht worden.\footnote{Vgl. Zaragoza, Najork, S. 1 \cite{zaragoza2018}}
-Da Moderne Suchmaschinen nutzen dutzende oder gar hunderte verschiedener Methoden um Features um die Relevanz der verfügbaren Suchergebnisse zu bewerten, wird im folgenden nur auf einige bekannte Methoden eingegangen.
+Moderne Suchmaschinen nutzen dutzende oder gar hunderte verschiedener Methoden und Features um die Relevanz der verfügbaren Suchergebnisse zu bewerten, wird im Folgenden nur auf einige bekannte Methoden eingegangen.
 
-Zur Einfachheit wird von der Webapplikation \gls{crossload} abstrahiert und stattdessen Beispiele aus der Internetsuche verwendet, welche zum Beispiel mit Google, Bing, Ecosia oder anderen \gls{searchEngine}n üblich ist.
+Zur Einfachheit wird von der Webapplikation \gls{crossload} abstrahiert und stattdessen Beispiele aus der Internetsuche verwendet, welche beispielsweise mit Google, Bing, Ecosia oder anderen \gls{searchEngine}n üblich ist.
 
 \subsection{Textuelle Relevanz}
 \label{sub:relevanceText}
@@ -29,7 +29,7 @@ Einige der verwendeten Funktionen um die textuelle Relevanz zu bewerten sind dab
 \begin{itemize}
   \item Die Anzahl der Treffer für den Suchterm oder Abwandlungen
   \item Position des Suchterms (früheres Vorkommen, z. B. im Titel)
-  \item Seiten Struktur (für Webseite: Ist der Term eine Überschrift o. ä.)
+  \item Seitenstruktur (für Webseiten: Ist der Term eine Überschrift o. ä.)
   \item Grafisches Layout (für Webseiten: Ist der Term z. B. farblich markiert)
   \item Levenshtein Distanz\footnote{Vgl. Levensthein \cite{levenshtein1966binary}} (die minimale Anzahl an Operationen, um eine Zeichenkette in eine andere umzuwandeln)
 \end{itemize}
@@ -39,16 +39,17 @@ Einige der verwendeten Funktionen um die textuelle Relevanz zu bewerten sind dab
 Des Weiteren ist es auch möglich den durchsuchten Objekten Attribute zuzuweisen, um für Schlagwörter relevantere Ergebnisse zu erlangen.
 Diese können entweder von Nutzern selbst bestimmt werden, wie z. B. bei der Website Flickr\footnote{Vgl. Liu et.al., S. 1-3 \cite{liu2009}}, um Bilder für bestimmte Themen höher werten zu lassen oder werden von Algorithmen aufgrund von Bilderkennung automatisch zugewiesen.
 
-Ein Beispiel hierfür ist Google, welches eine frei verwendbare Machine Learning API\footnote{Vgl. Google ML Dokumentation \cite{googledevelopers2022}} oder eine direkte Integration, in die Google Fotos App anbietet, welche die gemachten Bilder automatisch in verschiedene Kategorien aufteilt.\footnote{Vgl. Google Fotos \cite{googlephotos2022}}
+Ein Beispiel hierfür ist Google, welches eine frei verwendbare Machine Learning API\footnote{Vgl. Google ML Dokumentation \cite{googledevelopers2022}} oder eine direkte Integration, in die Google Fotos App anbietet. Diese Anwendung teilt automatisch die gemachten Bilder in verschiedene Kategorien ein.\footnote{Vgl. Google Fotos \cite{googlephotos2022}}
 
 Möglich gefundene Ergebnisse können auch durch Existenz oder Nichtvorhandensein eines Attributs höher gewichtet werden.
 Dadurch können zum Beispiel bereits aufbereitete Ergebnisse eine höhere Relevanz erhalten. \footnote{Siehe Crossload Search API \cite{crossload2022}}
 
 \subsection{Hyperlink Relevanz}
 \label{sub:relevanceHyperlink}
-Für Suchergebnisse im Internet oder andere miteinander verlinkte Seiten, wie z. B. in internen Dokumentationsseiten, Wikis o. ä., können auch die Hyperlinks,
-die auf eine andere Seite verlinken genutzt werden die Relevanz eines Ergebnisses zu bestimmen.
-Ein Hyperlink besteht hierbei aus dem angezeigten Text auf der Quellseite und einem Link zur Zielseite oder auf einen bestimmten Abschnitt dergleichen. Dies ist aber kein automatischer Prozess, sondern jeder Link wird von Menschen gesetzt. Aus diesem Grund kann man hier von „menschlicher Intelligenz“ sprechen.\footnote{Vgl. Zaragoza, Najork, S. 2 \cite{zaragoza2018}}
+Für Suchergebnisse im Internet oder andere miteinander verlinkte Seiten, wie z. B. in internen Dokumentationsseiten, Wikis o. ä., können auch die Hyperlinks genutzt werden, um die Relevanz eines Ergebnisses zu bestimmen.
+Ein Hyperlink besteht hierbei aus dem angezeigten Text auf der Quellseite und einem Link zur Zielseite oder auf einen bestimmten Abschnitt dergleichen.
+Dies ist aber kein automatischer Prozess, sondern jeder Link wird von Menschen gesetzt.
+Aus diesem Grund kann man hier von „menschlicher Intelligenz“ sprechen.\footnote{Vgl. Zaragoza, Najork, S. 2 \cite{zaragoza2018}}
 
 Um einen Treffer höher zu gewichten, ist eine Option die Anzahl an Verlinkungen auf eine Seite zu zählen und absteigend zu sortieren.\footnote{Vgl. Marchiori \cite{marchiori1997}}
 Alternativ kann der angezeigte Linktext noch zusätzlich als eine Art Attribut (\ref{sub:relevanceAttribute}) oder erweiterte textuelle Referenz (\ref{sub:relevanceText}) gesehen werden, der dann bei der Auswertung einer Suche mitverwendet wird.\footnote{Vgl. Page, Brin, Motwani und Winograd \cite{ilprints422}}
@@ -57,37 +58,39 @@ Alternativ kann der angezeigte Linktext noch zusätzlich als eine Art Attribut (
 \label{sub:relevanceUser}
 Um unabhängiger von manuellem Verlinken zwischen Seiten zu werden, haben bekannte Suchmaschinen auch Möglichkeiten entwickelt, die Anzahl der „erfolgreich“ gefundenen Treffer zu zählen und als relevanter zu gewichten.
 Im Umfeld einer Internetsuche wäre der „erfolgreich“ gefundene Treffer ein Klick auf die entsprechende Website.
-Diese können entweder live oder durch Auswertung von Log Dateien analysiert werden. Andere Wege um die Anzahl an Besuchen auf einer Website zu messen, umfassen Tracking Methoden, Toolbars oder Werbung.
-Diese Methode ist überaus erfolgreich, da hier von einer Art Schwarmintelligenz ausgegangen wird, die Nutzern für die gleiche Suche Ergebnisse anzeigt, die schon viele Benutzer davor angeklickt haben. \footnote{Vgl. Joachims, Radlinski, S. 1 \cite{joachims2007}}
+Diese können entweder live oder durch Auswertung von Log Dateien analysiert werden.
+Andere Wege um die Anzahl an Besuchen auf einer Website zu messen, umfassen Tracking Methoden, Toolbars oder Werbung.
+Die Bewertung der Relevanz durch das untersuchte Nutzerverhalten ist überaus erfolgreich, da hier von einer Art Schwarmintelligenz ausgegangen wird, die Nutzern für die gleiche Suche Ergebnisse anzeigt, die schon viele Benutzer davor angeklickt haben. \footnote{Vgl. Joachims, Radlinski, S. 1 \cite{joachims2007}}
 
 \subsection{Performance}
 \label{sub:relevancePerformance}
-Da Suchmaschinen dem Nutzer eine bestmögliche Benutzererfahrung, auch bekannt als User Experience, ermöglichen wollen, sollen die gefundenen Webseiten dies bieten. Eine Möglichkeit dies zu messen ist die Performance einer Website.
-Dies umfasst die Ladegeschwindigkeit, Speicherverbrauch und benötigte Leistung um die Seite komplett anzuzeigen.
+Da Suchmaschinen dem Nutzer eine bestmögliche Benutzererfahrung, auch bekannt als User Experience, ermöglichen wollen, sollen die gefundenen Webseiten dies bieten. Eine Möglichkeit dies zu messen, ist die Performance einer Website.
+Die Performance einer Webseite oder eines Suchergebnisses umfasst die Ladegeschwindigkeit, Speicherverbrauch und benötigte Leistung um das Ergebnis komplett anzuzeigen.
 Da dies nicht für x-Millionen Treffer bei jeder Suchanfrage getestet werden kann, werden mögliche Suchtreffer vorher indiziert und nach der Performance untersucht.
 Dadurch entsteht ein Performance-Score, welcher dann für die Relevanz verwendet werden kann.\footnote{Vgl. Manning, Raghavan, Schütze \cite{manning2008}}
 
 \section{Auswertung der Relevanz von Suchergebnissen}
 \label{sec:relevanceScore}
-Um letztendlich Ergebnisse mit der höchsten Relevanz zu erhalten wird meist eine Kombination aus mehreren der o.g. Methoden benutzt, um die komplette Relevanz für einen Treffer zu bewerten.
-Die Herausforderung dabei ist die genaue Gewichtung der einzelnen Methoden um die Relevanz eines Treffers optimal zu bewerten.
+Um letztendlich Ergebnisse mit der höchsten Relevanz zu erhalten, wird meist eine Kombination aus mehreren der o.g. Methoden benutzt, um die komplette Relevanz für einen Treffer zu bewerten.
+Die Herausforderung dabei ist die genaue Gewichtung der einzelnen Methoden, um die Relevanz eines Treffers optimal zu bewerten.
 Für jeden Treffer wird dann ein Relevanzscore berechnet, der sich aus den einzelnen Methoden zusammensetzt. Nach diesem Score wird in einer Liste absteigend sortiert, um das relevanteste Ergebnis als erstes Element zu erhalten.
 
-Sollte sich der Score eines Treffers in der Relation zu anderen Wertungen weit absetzen, kann dieser Treffer dem Nutzer auch direkt vorgeschlagen werden.\footnote{Vgl. Turnbull, Berryman, S. 225-228 \cite{turnbull2016}} Dieses Vorschlagen von Ergebnissen kann bereits bei der Eingabe einer Abfrage geschehen, durch sogenannte „Search Completion“.\footnote{Vgl. Turnbull, Berryman, S. 206-218 \cite{turnbull2016}}
+Sollte sich der Score eines Treffers in der Relation zu anderen Wertungen weit absetzen, kann dieser Treffer dem Nutzer auch direkt vorgeschlagen werden.\footnote{Vgl. Turnbull, Berryman, S. 225-228 \cite{turnbull2016}}
+ Dieses Vorschlagen von Ergebnissen kann bereits bei der Eingabe einer Abfrage durch „Search Completion“ geschehen.\footnote{Vgl. Turnbull, Berryman, S. 206-218 \cite{turnbull2016}}
 
 Für kleinere Anwendungen ist hierbei meist ein manuelles Einstellen nach einem \gls{trialAndError} Verfahren notwendig, bei denen einige wenige Methoden unterschiedlich gewichtet werden.
 Dies wird dann von Zeit zu Zeit wiederholt, wenn neue Erkenntnisse aus Tests oder dem produktiven Betrieb zurückkommen.\footnote{Vgl. Zaragoza, Najork, S. 3 \cite{zaragoza2018}}
 
-Große Suchmaschinen Nutzen hierfür allerdings wie bereits erwähnt hunderte Methoden und evaluieren deren Erfolg im produktiven Betrieb durch proprietäre statistische Methoden.\footnote{Vgl. Taylor, Zaragoza, Craswell, Robertson, Burges \cite{taylor2006}}
+Große Suchmaschinen nutzen hierfür allerdings, wie bereits erwähnt, hunderte Methoden und evaluieren deren Erfolg im produktiven Betrieb durch proprietäre statistische Methoden.\footnote{Vgl. Taylor, Zaragoza, Craswell, Robertson, Burges \cite{taylor2006}}
 
 \section{SOLR}
 \label{sec:SOLR}
 SOLR ist von Crossload verwendete Such Engine, die als Web Schnittstelle dient, um auf einer Datenmenge Suchanfragen mit Apache \gls{lucene} auszuwerten.\footnote{Siehe Apache SOLR \cite{solr2022}}
 
 Apache Lucene, oder auch kurz Lucene genannt, ist eine mächtige Suchbibliothek, die plattformunabhängig von verschiedenen bekannten Apps, wie z. B. Netflix eingesetzt wird.
-Lucene nutzt für die Indizierung zu durchsuchender Dokumente Textfelder, wie z. B. „title“ für den Titel eines Dokumentes, um sowohl den Inhalt als Volltext sowie auch die Attribute durchsuchen zu können. \footnote{Siehe Apache Lucene \cite{lucene2022}}
+Lucene nutzt für die Indizierung zu durchsuchender Dokumente Textfelder, wie z. B. „title“ für den Titel eines Dokumentes, um sowohl den Inhalt als Volltext, als auch die Attribute durchsuchen zu können. \footnote{Siehe Apache Lucene \cite{lucene2022}}
 
-SOLR benutzt die hier die Indexing Funktionen von Lucene, um in Echtzeit alle verfügbaren Dokumente zu indizieren um bei einer Suche nur den Index durchsuchen zu müssen.
+SOLR benutzt hier die Indexing Funktionen von Lucene, um in Echtzeit alle verfügbaren Dokumente zu indizieren, um bei einer Suche nur den Index durchsuchen zu müssen.
 Mit Apache Zookeeper wird dann eine \gls{api} zur Verfügung gestellt, welche Synchronisierung, Namensregister und die Verteilung der Konfiguration bereitstellt.
 Inhalte werden anhand von Boostingmechanismen höher oder schlechter bewertet.
 Als Entwickler gibt man hierfür mögliche Textfelder an, auf denen SOLR automatisch ein Textmatching anwendet (\ref{sub:relevanceText}).
@@ -103,8 +106,8 @@ Auf Crossload gibt es derzeit Predigten mit und ohne Video, Bücher, Bilder, Mus
 
 Technisch ist Crossload wie folgt aufgestellt:
 \begin{itemize}
-  \item \textbf{Frontend:} UI entwickelt mit Angular zum Durchsuchen der Datenbank und direktem Streaming der Predigten. Für die Analyse und Statistiken, welche Seiten besucht, welche Inhalte angehört und welche Suchanfragen abgegeben wurden, wird Matomo verwendet. Matomo, ein Open-Source Pendant zu Google Analytics, enthält auch Statistiken zur durchschnittlichen Dauer eines Besuches.\footnote{Siehe Matomo \cite{matomo2022}}
-  \item \textbf{Suche:} Auf SOLR basierte REST API mit allen veröffentlichten Inhalten und anderen Metadaten. Wird benutzt, um Last vom redaktionellen Backend zu nehmen.
+  \item \textbf{Frontend:} UI entwickelt mit Angular zum Durchsuchen der Datenbank und direktem Streaming der Predigten. Für die Analyse und Statistiken wird Matomo verwendet. Dieser Dienst verfolgt besuchte Seiten, angehörte Inhalte und abgegebene Suchanfragen. Das Open-Source Pendant zu Google Analytics enthält auch Statistiken zur durchschnittlichen Dauer eines Besuches.\footnote{Siehe Matomo \cite{matomo2022}}
+  \item \textbf{Suche:} Eine auf SOLR basierte REST API mit allen veröffentlichten Inhalten und anderen Metadaten. Sie wird benutzt, um Last vom redaktionellen Backend zu nehmen.
   \item \textbf{Redaktion:} Aufbereitung und Anlegen von Inhalten verschiedenster Kategorien und anderer Metadaten.
   \begin{itemize}
     \item \textbf{Angular UI}: Redaktionelles Backend zum Pflegen aller Daten von Crossload.

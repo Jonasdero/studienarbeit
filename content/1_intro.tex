@@ -1,7 +1,7 @@
 \chapter{Einleitung}\label{ch:intro}
 
 \section{Relevanz des Themas}
-Suchalgorithmen und relevante Suchergebnisse sind derzeit so relevant wie noch nie.
+Suchalgorithmen und relevante Suchergebnisse sind derzeit so relevant wie noch nie zuvor.
 Dabei wollen die Benutzer einer Suchmaschine in Sekundenbruchteilen Ergebnisse, die am besten zu ihrem Suchbegriff passen, ohne sich dabei viel Gedanken über die Formulierung eines solchen Begriffes zu machen.
 Ein Beispiel für einen solchen Algorithmus ist Google, welches seit den frühen 2000ern einen kometenhaften Aufstieg in der Welt der Suchmaschinen hinter sich hat, was anhand der erreichten Werbeeinnahmen sichtbar wird.\footnote{Siehe \ref{fig:werbeumsatz}}
 
@@ -9,10 +9,12 @@ Google ist im Vergleich zu anderen Suchmaschinen so stark verbreitet\footnote{Si
 Dabei stellt sich für die Entwicklung eigener Produkte die Frage, wie aus einem Suchbegriff, der meist nur aus wenigen Wörtern bis zu einem ganzen Satz besteht, relevante Suchergebnisse gefunden werden können. Dies würde zur Akzeptanz der Nutzer im Hinblick auf die entwickelte Funktionalität führen, da gewünschte Ergebnisse schneller und ohne großen Aufwand gefunden werden können.
 
 \section{Ausgangssituation}
-Derzeit besteht bei \gls{crossload}\footnote{Siehe Crossload.org \cite{pfleiderer2022}}, einer Plattform zur Durchsuchung einer umfangreichen Predigtdatenbank, welche mit einer Such \gls{api} auf Basis von Spring Boot und \gls{solr} ausgestattet ist. Diese teilt auf der Suchergebnisseite die Ergebnisse nach Kategorien auf und somit können nur schwer übergreifende Suchanfragen getätigt werden. Zwar werden alle Treffer auf der gleichen Seite angezeigt, doch durch die Aufteilung nach Kategorien werden Ergebnisse gewisser Kategorien über anderen gezeigt, auch wenn niedrig positionierte Kategorien relevantere Ergebnisse enthalten.\footnote{Siehe \ref{fig:crossloadSuche}}
+Derzeit besteht bei \gls{crossload}\footnote{Siehe Crossload.org \cite{pfleiderer2022}} eine Plattform zur Durchsuchung einer umfangreichen Predigtdatenbank, welche mit einer Such \gls{api} auf Basis von Spring Boot und \gls{solr} ausgestattet ist.
+Diese teilt auf der Suchergebnisseite die Ergebnisse nach Kategorien auf und somit können nur schwer übergreifende Suchanfragen getätigt werden.
+Zwar werden alle Treffer auf der gleichen Seite angezeigt, doch durch die Aufteilung nach Kategorien werden Ergebnisse gewisser Kategorien über anderen gezeigt, auch wenn niedrig positionierte Kategorien relevantere Ergebnisse enthalten.\footnote{Siehe \ref{fig:crossloadSuche}}
 
 Durch eine Verbesserung der Relevanz, sowie einfacheres Suchen und weiterführende Vorschläge kann die Nutzerakzeptanz der Webseite weiter gefördert werden, da schneller bzw. überhaupt gesuchte Inhalte gefunden werden.
-Gefundene Inhalte werden direkt auf der Crossload angehört, weswegen dadurch die mittlere Nutzungsdauer der Seite gesteigert wird.
+Gefundene Inhalte werden direkt auf Crossload angehört, weswegen dadurch die mittlere Nutzungsdauer der Seite gesteigert wird.
 
 \section{Zielsetzung \& Vorgehen}
 Das Ziel der vorliegenden Studienarbeit ist es, für die oben genannte Problemstellung einen Prototyp zur Erweiterung und Verbesserung des bisher genutzten Suchalgorithmus bei Crossload zu entwickeln.
@@ -29,8 +31,8 @@ Ebenso werden bereits etablierte Tools genutzt, um die Anforderungen weiter zu v
 
 Für die Entwicklung wird dabei das Wasserfallmodell genutzt.
 Obwohl es in seinen Nachteilen gegenüber z. B. agilen Methoden überwiegt, bietet es doch wenig Aufwand um die eigentliche Entwicklung herum und stellt eine klare Struktur bereit.
-Diese hilft, schnell ein Produkt, oder in diesem Fall einen Prototyp, fertigzustellen.
-Das Modell ist auch vorteilhaft, weil die Anforderungen in ihrer Gesamtheit schon bekannt sind, beziehungsweise vor der Entwicklung sein werden und keine weiteren Faktoren hinzukommen. Die dafür verwendeten Phasen, Anforderungserhebung, Entwicklung und anschließendem Test der Anforderungen, werden in nachfolgender Abbildung verdeutlicht.
+Diese hilft, schnell ein Produkt oder wie in diesem Fall einen Prototyp, fertigzustellen.
+Das Modell ist auch vorteilhaft, weil die Anforderungen in ihrer Gesamtheit schon bekannt sind, bzw. vor der Entwicklung sein werden und keine weiteren Faktoren hinzukommen. Die dafür verwendeten Phasen, Anforderungserhebung, Entwicklung und Test der Anforderungen, werden in nachfolgender Abbildung verdeutlicht.
 \begin{figure}[h]
   \begin{centering}
     \includegraphics[width=.6\textwidth]{figures/intro/waterfall.png}
@@ -43,7 +45,7 @@ Im Rahmen der Konzeption wird auf die bisherige Funktionalität eingegangen, um 
 
 Die Implementierung umfasst, die nach Kontext und Wahrscheinlichkeiten gewichtete und gefilterte Suche über eine Datenbank mit Datentypen verschiedener Kategorien bei der zusätzlich Vorschläge zur weiteren Navigation auf der Suchergebnisseite gegeben werden sollen.
 
-Schlussendlich werden die Ergebnisse der Entwicklung zusammengefasst, die Anforderungen und die Implementation bewertet, sowie durch einen Ausblick, wie der Prototyp in einen produktiven Betrieb übergehen könnte, und ein Fazit abgerundet.
+Schlussendlich werden die Ergebnisse der Entwicklung zusammengefasst, die Anforderungen und die Implementation bewertet, sowie durch einen Ausblick, wie der Prototyp in einen produktiven Betrieb übergehen könnte, und mit einem Fazit abgerundet.
 
 Im Lauf der Arbeit werden die folgenden Fragen beantwortet:
 \begin{itemize}
