@@ -123,7 +123,7 @@ Diese gefundenen Ergebnisse werden dann untersucht, um einen Vorschlag zu finden
     boolean onlyOneElement = mostRelevant.size() == 1;
 
     // Case 1: Score of the first element is at least twice as much of the second score
-    boolean biggerThanDoubleTheScore = mostRelevant.size() > 2 && mostRelevant.get(0).getScore() >= 2 * mostRelevant.get(1).getScore();
+    boolean biggerThanDoubleTheScore = mostRelevant.size() >= 2 && mostRelevant.get(0).getScore() >= 2 * mostRelevant.get(1).getScore();
 
     if(onlyOneElement || biggerThanDoubleTheScore) {
       return mostRelevant.get(0);
@@ -162,7 +162,7 @@ Für die Anzeige wird dann die bereits verfügbare Liste der gefundenen Inhalte 
 
 
 \begin{lstlisting}[language=Java, label={code:suggestionRow}, title={Code für Anzeige des Vorschlage \cite{frontend2022}}]
-  <div role="rowgroup" attr.data-cy="category_suggestion">
+  <div role="rowgroup" attr.data-cy="category_suggestion" *ngIf="response.suggestion>
     <app-content-list-header text="Vorschlag"></app-content-list-header>
 
     <app-content-list
