@@ -200,6 +200,13 @@
 \printnoidxglossaries
 \tableofcontents
 
+\makeatletter
+\renewcommand\mainmatter{%
+    \clearpage
+  \@mainmattertrue
+  \pagenumbering{arabic}}
+\makeatother
+
 \mainmatter
 \include{content/1_intro}
 \include{content/2_foundations}
