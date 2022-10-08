@@ -1,12 +1,12 @@
 \chapter{Konzeption}
 \label{ch:conception}
 Bevor mit der Entwicklung des Prototyps gestartet werden kann, geht die Planung und Konzeption der Erweiterung voraus.
-Der Entwurf einer Software ist die Basis für jede Entwicklung.
+Der Entwurf einer Software ist die Basis für jede Softwareentwicklung und sollte vor der Implementierung erfolgen.
 Anfangs wird die momentane Anwendung auf bereits implementierte Funktionalität überprüft und schließlich mithilfe der erarbeiteten Methoden zur Bewertung der Relevanz auf Grundlage der gesammelten Anforderungen verbessert.
 
-\section{Bisherige implementierte Funktionalität}
+\section{Bereits implementierte Funktionalität}
 \label{sec:implementedFunctionality}
-Bei \gls{crossload} werden verschiedene Typen bzw. Kategorien von Inhalten in der von SOLR indizierten Datenbank über eine Spring Boot Anwendung an das Webfrontend zur Verfügung gestellt.
+Bei \gls{crossload} werden verschiedene Typen bzw. Kategorien von Inhalten in der von Solr indizierten Datenbank über eine Spring Boot Anwendung an das Webfrontend zur Verfügung gestellt.
 Der initiale und derzeit implementierte Gedanke dabei ist, die Inhalte auch in diesen Kategorien zu übertragen und in fester Reihenfolge anzuzeigen.
 Diese Vorgehensweise hat jedoch einige Nachteile:
 
@@ -14,6 +14,7 @@ Diese Vorgehensweise hat jedoch einige Nachteile:
   \item \textbf{Relevanz:} Der möglicherweise relevanteste Inhalt wird nicht als Erstes angezeigt, da dessen Kategorie relativ weit unten angezeigt wird.
   \item \textbf{Übersicht:} Es ist schwer für den Nutzer eine Übersicht über alle gefundenen Inhalte zu erlangen.
   \item \textbf{User Experience:} Höchstwahrscheinliche Treffer (90-100 \% Trefferwahrscheinlichkeit) werden nicht direkt vorgeschlagen.
+  Ein Treffer ist hierbei sehr wahrscheinlich relevant, wenn er ein Treffer mit einem sehr hohen errechneten Relevanzscore ist.\footnote{Siehe \ref{sec:userStories}}
 \end{itemize}
 
 Diese Nachteile sollen im Verlaufe der Entwicklung verbessert werden.
@@ -35,12 +36,12 @@ Diese umfassen derzeit:
 \section{Verbesserungen für relevantere Inhalte}
 \label{sec:potential}
 
-Grundsätzlich findet die Anwendung bereits passende bzw. relevante Inhalte durch das Matching der verschiedenen Attribute (\ref{sub:relevanceAttribute}) und Textteile (\ref{sub:relevanceText}).
+Grundsätzlich findet die Anwendung bereits passende bzw. relevante Inhalte durch das Matching der verschiedenen Attribute\footnote{Siehe \ref{sub:relevanceAttribute}} und Textteile.\footnote{Siehe \ref{sub:relevanceText}}
 Ebenso das Matching bezüglich des Bibelverses oder des initialen Boosting über ein vorhandenes Video oder Bild führt bereits zum gewünschten Ergebnis und eine Änderung würde hier keinen nennenswerten Mehrwert bieten.
 
-Dennoch gibt es einige Ideen, relevantere Inhalte für den Nutzer herauszugeben: zusammengeführte Listen, ein Schlagwortabgleich auf die Kategorien und Vorschläge zur weiteren Navigation.
+Dennoch gibt es einige Ideen, relevantere Inhalte für den Nutzer herauszugeben: zusammengeführte Listen, ein Zuordnung des Suchbegriffes zu einer Kategorie auf die Kategorien und Vorschläge zur weiteren Navigation.
 
-\subsection{Zusammengeführte Liste}
+\subsection{Gemischte Ergebnisliste}
 \label{sub:unifiedList}
 Als oberstes Ziel wird die Liste der gefundenen Inhalte, momentan aufgespalten in die verschiedenen Kategorien wie z. B. Bild, Video, Predigt, Buch, etc., in eine große Liste überführt.
 Dadurch können relevante Inhalte, die bisher durch die vordefinierte Sortierung der Kategorien auf der Suchseite nicht als Erste aufgelistet wurden, an der Stelle angezeigt werden, an welcher der Nutzer sie erwartet.
@@ -48,7 +49,7 @@ Dadurch können relevante Inhalte, die bisher durch die vordefinierte Sortierung
 Damit der Nutzer dennoch die jeweilige Kategorie der Suchergebnisse sieht, wird anschließend zu der ausführlichen Version des Ergebnisses ein kleiner Text mit dessen Kategorie hinzugefügt.
 So geht die bisherige Funktionalität nicht komplett verloren und der Nutzer erhält die relevantesten Inhalte direkt an erster Stelle und sieht sofort dessen Kategorie.
 
-\subsection{Schlagwortabgleich}
+\subsection{Zuordnung des Suchbegriffes zu einer Kategorie}
 \label{sub:keyword}
 Eine Möglichkeit, die Relevanz der Suchergebnisse im Sinne der Aufgabenstellung zu verbessern, wäre es, anhand des Suchbegriffes herauszufiltern, ob z. B. ein Schlagwort wie „Video“ oder „Bild“ verwendet wurde und somit Inhalte dieser Kategorie relevanter sind.
 

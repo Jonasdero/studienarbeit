@@ -17,7 +17,7 @@ Robertson
 Completion
 Burges
 Liu
-SOLR
+Solr
 Crossload.org
 Stories
 Jeffries
@@ -49,3 +49,4 @@ Vorschlagsbox
 CrossloadCriteriaBuilder
 Vorschlagsobjekt
 suggestion
+Pfleiderer

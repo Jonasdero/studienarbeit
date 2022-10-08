@@ -1,6 +1,7 @@
 \chapter{Einleitung}\label{ch:intro}
 
 \section{Relevanz des Themas}
+\label{sec:topicRelevance}
 Suchalgorithmen und relevante Suchergebnisse sind derzeit so relevant wie noch nie zuvor.
 Dabei wollen die Benutzer einer Suchmaschine in Sekundenbruchteilen Ergebnisse, die am besten zu ihrem Suchbegriff passen, ohne sich dabei viel Gedanken über die Formulierung eines solchen Begriffes zu machen.
 Ein Beispiel für einen solchen Algorithmus ist Google, welches seit den frühen 2000ern einen kometenhaften Aufstieg in der Welt der Suchmaschinen hinter sich hat, was anhand der erreichten Werbeeinnahmen sichtbar wird.\footnote{Siehe \ref{fig:werbeumsatz}}
@@ -9,6 +10,7 @@ Google ist im Vergleich zu anderen Suchmaschinen so stark verbreitet\footnote{Si
 Dabei stellt sich für die Entwicklung eigener Produkte die Frage, wie aus einem Suchbegriff, der meist nur aus wenigen Wörtern bis zu einem ganzen Satz besteht, relevante Suchergebnisse gefunden werden können. Dies würde zur Akzeptanz der Nutzer im Hinblick auf die entwickelte Funktionalität führen, da gewünschte Ergebnisse schneller und ohne großen Aufwand gefunden werden können.
 
 \section{Ausgangssituation}
+\label{sec:currentSituation}
 Derzeit besteht bei \gls{crossload}\footnote{Siehe Crossload.org \cite{pfleiderer2022}} eine Plattform zur Durchsuchung einer umfangreichen Predigtdatenbank, welche mit einer Such \gls{api} auf Basis von Spring Boot und \gls{solr} ausgestattet ist.
 Diese teilt auf der Suchergebnisseite die Ergebnisse nach Kategorien auf und somit können nur schwer übergreifende Suchanfragen getätigt werden.
 Zwar werden alle Treffer auf der gleichen Seite angezeigt, doch durch die Aufteilung nach Kategorien werden Ergebnisse gewisser Kategorien über anderen gezeigt, auch wenn niedrig positionierte Kategorien relevantere Ergebnisse enthalten.\footnote{Siehe \ref{fig:crossloadSuche}}
@@ -17,11 +19,12 @@ Durch eine Verbesserung der Relevanz, sowie einfacheres Suchen und weiterführen
 Gefundene Inhalte werden direkt auf Crossload angehört, weswegen dadurch die mittlere Nutzungsdauer der Seite gesteigert wird.
 
 \section{Zielsetzung \& Vorgehen}
+\label{sec:methods}
 Das Ziel der vorliegenden Studienarbeit ist es, für die oben genannte Problemstellung einen Prototyp zur Erweiterung und Verbesserung des bisher genutzten Suchalgorithmus bei Crossload zu entwickeln.
 
 Einleitend wird ein Einblick in die Grundlagen der Relevanz sowie mögliche Methoden und Funktionen zur Bewertung gegeben, sowie auf eine finale Auswertung der gesammelten Methoden eingegangen.
 Die hier erarbeiteten Grundlagen und Methoden werden im weiteren Verlauf mit in die Entwicklung einfließen.
-Anschließend folgt eine kurze Einleitung zu SOLR, der genutzten Search Engine von Crossload, sowie zu Crossload selbst.
+Anschließend folgt eine kurze Einleitung zu Solr, der genutzten Search Engine von Crossload, sowie zu Crossload selbst.
 Dieser theoretische Teil der Arbeit basiert größtenteils auf einer Literaturrecherche.
 Google Scholar, relevante Dokumentationen oder die einfache Google Suche stellen dazu die Grundlage dar.
 Die gefundenen Ergebnisse werden auf Qualität und Themenbezug geprüft.

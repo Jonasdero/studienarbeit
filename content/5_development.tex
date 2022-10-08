@@ -3,15 +3,15 @@
 
 Die Umsetzung des Prototyps erfolgt in mehreren Schritten.
 Zu Beginn wird wie in \ref{sub:unifiedList} beschrieben, die Liste aller Ergebnisse zusammengeführt und absteigend nach der Relevanz sortiert.
-Anschließend wird der Schlagwortabgleich (\ref{sub:keyword}) implementiert, indem die Liste der möglichen Synonyme mit dem Suchterm abgeglichen wird und die Ergebnisse geboostet werden, wenn der Suchterm ein Synonym enthält.
-Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag wie in \ref{sub:suggestion} beschrieben dem Ergebnis hinzugefügt.
+Anschließend wird die Zuordnung des Suchbegriffes zu einer Kategorie\footnote{Siehe \ref{sub:keyword}} implementiert, indem die Liste der möglichen Synonyme mit dem Suchterm abgeglichen wird und die Ergebnisse geboostet werden, wenn der Suchterm ein Synonym enthält.
+Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag, beschrieben in \ref{sub:suggestion}, dem Ergebnis hinzugefügt.
 
-\section{Zusammengeführte Liste}
+\section{Gemischte Ergebnisliste}
 \label{sec:devUnifiedList}
 
 Für die Entwicklung der zusammengeführten Liste im Crossload Frontend ist wichtig, dass die schon implementierte Funktionalität der Suche nach Kategorien nach der Entwicklung immer noch möglich sein muss.
 Dazu finden sich auf der Suchergebnisseite mehrere Tabs, bei denen auch eine Suche innerhalb von Kategorien möglich ist.
-Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen (\ref{fig:crossloadSuche}).
+Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen.\footnote{Siehe \ref{fig:crossloadSuche}}
 
 \begin{figure}[h]
   \begin{centering}
@@ -45,14 +45,14 @@ Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön
   }
 \end{lstlisting}
 
-Das Ergebnis zeigt eine zusammengeführte Liste, die komplett nach Relevanz sortiert ist (\ref{fig:crossloadSucheNeu}).
+Das Ergebnis zeigt eine zusammengeführte Liste, die komplett nach Relevanz sortiert ist.\footnote{Siehe \ref{fig:crossloadSucheNeu}}
 Mithilfe der Symbole, die bereits bei den Ergebnissen die Kategorie bereits kennzeichneten, kann der Nutzer einfach erkennen, welcher Inhalt von welcher Kategorie ist.
 
-\section{Schlagwortabgleich}
+\section{Zuordnung des Suchbegriffes zu einer Kategorie}
 \label{sec:devKeywords}
 
-Für den Schlagwortabgleich werden die Synonyme in Java konfiguriert.
-Dazu wird eine Enumeration erstellt, die eine Liste der Synonyme enthält (\ref{code:SermonCategory}).
+Für den Zuordnung des Suchbegriffes zu einer Kategorie, werden die Synonyme in Java konfiguriert.
+Dazu wird eine Enumeration erstellt, die eine Liste der Synonyme enthält.\footnote{Siehe \ref{code:SermonCategory}}
 Durch diese Enumeration können Änderungen leicht eingebaut werden und durch die vorhandene \gls{ci}/\gls{cd} Pipeline direkt in die produktive Umgebung eingespielt werden.
 Somit wäre der Nachteil der fest definierten Synonyme ausgeglichen, da Korrekturen schnell eingespielt werden können.
 
@@ -98,18 +98,18 @@ Durch das hier verfügbare Skript werden nun die Kategorien anhand des gegebenen
 
 Für die Vorschläge sind Anpassungen sowohl in Suche, um den Vorschlag herauszuarbeiten, als auch im Frontend, um den Vorschlag anzuzeigen, notwendig.
 
-In der Such API wird hierfür zunächst die zurückgegebene Antwort um ein Vorschlagsobjekt ("suggestion") erweitert (\ref{code:SolrResponse}).
+In der Such API wird hierfür zunächst die zurückgegebene Antwort um ein Vorschlagsobjekt ("suggestion") erweitert.\footnote{Siehe \ref{code:SolrResponse}}
 In diesem Objekt wird für das Frontend entweder die vorgeschlagene Predigt stehen oder kein Wert, wenn es keinen Vorschlag gibt.
 
-Um einen Vorschlag zu finden, müssen die relevantesten Inhalte nach den bereits erwähnten Kriterien untersucht werden (\ref{sub:suggestion}).
+Um einen Vorschlag zu finden, müssen die relevantesten Inhalte nach den bereits erwähnten Kriterien untersucht werden.\footnote{Siehe \ref{sub:suggestion}}
 Im derzeitigen Code wird immer nur eine Suchseite mit bis zu 20 Ergebnissen zurückgegeben.
 Wenn diese benutzt werden, um das relevanteste Ergebnis zu finden, würde man maximal einen Vorschlag pro Seite bekommen.
 Dieser wäre von Seite pro Seite unterschiedlich.
 
-Mit SOLR ist es allerdings möglich, eine Query mit einem Ergebnis und den gleichen Suchparametern abzugeben, die nur die ersten 10 Elemente einer nach dem Relevanzscore absteigend sortierten Liste zurückgibt.
+Mit Solr ist es allerdings möglich, eine Query mit einem Ergebnis und den gleichen Suchparametern abzugeben, die nur die ersten 10 Elemente einer nach dem Relevanzscore absteigend sortierten Liste zurückgibt.
 
 \clearpage
-\begin{lstlisting}[language=Java, label={code:SOLRSuggestionQuery}, title={SOLR Query für die Top 10 Ergebnisse, absteigend sortiert nach Relevanz \cite{solr-search2022}}]
+\begin{lstlisting}[language=Java, label={code:SOLRSuggestionQuery}, title={Solr Query für die Top 10 Ergebnisse, absteigend sortiert nach Relevanz \cite{solr-search2022}}]
   final JsonQueryRequest suggestionQuery = new JsonQueryRequest(params)
     .withParam("q", solrQuery.getQuery())
     .withParam("fl", "*, [child limit=100]")

@@ -8,7 +8,9 @@ Das bedeutet, dass Relevanz von Person zu Person unterschiedlich ist, da zum ein
 
 Um zu verstehen, woher die Relevanz stammt bzw. in der Informationstechnik verwendet wird, ist es wichtig, die Gewinnung von Informationen aus Objekten (\emph{Information Retrieval}) zu verstehen.
 Dieser Teil der Wissenschaft beschäftigt sich mit dem präzisen Abruf von Informationen, um das Informationsbedürfnis (\emph{Information need}) eines Nutzers zu stillen.
-Der Bedarf nach einem Bedürfnis wird hierbei von einem idealen Inhalt gestillt, stellt also die Spezifikation eines idealen Inhalts dar. Diese Spezifikation geht aber über den reinen textuellen Inhalt der Suche hinaus. Die Relevanz ist dabei die Aktivität bzw. Praxis um diesen idealen Inhalt zu finden.\footnote{Vgl. Manning, Raghavan, Schütze \cite{manning2008}}
+Der Bedarf nach einem Bedürfnis wird hierbei von einem idealen Inhalt gestillt, stellt also die Spezifikation eines idealen Inhalts dar.
+Diese Spezifikation geht aber über den reinen textuellen Inhalt der Suche hinaus.
+Die Bestimmung der Relevanz ist dabei die Aktivität bzw. Praxis um diesen idealen Inhalt zu finden.\footnote{Vgl. Manning, Raghavan, Schütze \cite{manning2008}}
 
 \section{Methoden zur Bewertung von Relevanz}
 
@@ -19,6 +21,7 @@ Dennoch sind die am häufigsten genutzten Merkmale bekannt und in einigen wissen
 Moderne Suchmaschinen nutzen dutzende oder gar hunderte verschiedener Methoden und Features um die Relevanz der verfügbaren Suchergebnisse zu bewerten, wird im Folgenden nur auf einige bekannte Methoden eingegangen.
 
 Zur Einfachheit wird von der Webapplikation \gls{crossload} abstrahiert und stattdessen Beispiele aus der Internetsuche verwendet, welche beispielsweise mit Google, Bing, Ecosia oder anderen \gls{searchEngine}n üblich ist.
+Die grundlegende untersuchte Funktionalität, die Suche und Bestimmung der Relevanz, ist bei Google und Crossload vergleichbar. Unterschiedlich sind sie in der Art der Ergebnisse (Google sucht nach Webseiten, Crossload nach Predigten, Bilder, etc.) und der Menge an untersuchten Ergebnissen.
 
 \subsection{Textuelle Relevanz}
 \label{sub:relevanceText}
@@ -48,7 +51,7 @@ Dadurch können zum Beispiel bereits aufbereitete Ergebnisse eine höhere Releva
 \label{sub:relevanceHyperlink}
 Für Suchergebnisse im Internet oder andere miteinander verlinkte Seiten, wie z. B. in internen Dokumentationsseiten, Wikis o. ä., können auch die Hyperlinks genutzt werden, um die Relevanz eines Ergebnisses zu bestimmen.
 Ein Hyperlink besteht hierbei aus dem angezeigten Text auf der Quellseite und einem Link zur Zielseite oder auf einen bestimmten Abschnitt dergleichen.
-Dies ist aber kein automatischer Prozess, sondern jeder Link wird von Menschen gesetzt.
+Hyperlinks werden aber nicht von einer Maschine in eine Seite eingefügt, sondern jeder Link wird von Menschen gesetzt.
 Aus diesem Grund kann man hier von „menschlicher Intelligenz“ sprechen.\footnote{Vgl. Zaragoza, Najork, S. 2 \cite{zaragoza2018}}
 
 Um einen Treffer höher zu gewichten, ist eine Option die Anzahl an Verlinkungen auf eine Seite zu zählen und absteigend zu sortieren.\footnote{Vgl. Marchiori \cite{marchiori1997}}
@@ -60,7 +63,7 @@ Um unabhängiger von manuellem Verlinken zwischen Seiten zu werden, haben bekann
 Im Umfeld einer Internetsuche wäre der „erfolgreich“ gefundene Treffer ein Klick auf die entsprechende Website.
 Diese können entweder live oder durch Auswertung von Log Dateien analysiert werden.
 Andere Wege um die Anzahl an Besuchen auf einer Website zu messen, umfassen Tracking Methoden, Toolbars oder Werbung.
-Die Bewertung der Relevanz durch das untersuchte Nutzerverhalten ist überaus erfolgreich, da hier von einer Art Schwarmintelligenz ausgegangen wird, die Nutzern für die gleiche Suche Ergebnisse anzeigt, die schon viele Benutzer davor angeklickt haben. \footnote{Vgl. Joachims, Radlinski, S. 1 \cite{joachims2007}}
+Die Bewertung der Relevanz durch das untersuchte Nutzerverhalten ist überaus erfolgreich, da hier von einer Art Schwarmintelligenz ausgegangen wird, die Nutzern für die gleiche Suche Ergebnisse anzeigt, die schon viele Benutzer davor angeklickt haben.\footnote{Vgl. Joachims, Radlinski, S. 1 \cite{joachims2007}}
 
 \subsection{Performance}
 \label{sub:relevancePerformance}
@@ -80,25 +83,44 @@ Sollte sich der Score eines Treffers in der Relation zu anderen Wertungen weit a
 
 Für kleinere Anwendungen ist hierbei meist ein manuelles Einstellen nach einem \gls{trialAndError} Verfahren notwendig, bei denen einige wenige Methoden unterschiedlich gewichtet werden.
 Dies wird dann von Zeit zu Zeit wiederholt, wenn neue Erkenntnisse aus Tests oder dem produktiven Betrieb zurückkommen.\footnote{Vgl. Zaragoza, Najork, S. 3 \cite{zaragoza2018}}
-
 Große Suchmaschinen nutzen hierfür allerdings, wie bereits erwähnt, hunderte Methoden und evaluieren deren Erfolg im produktiven Betrieb durch proprietäre statistische Methoden.\footnote{Vgl. Taylor, Zaragoza, Craswell, Robertson, Burges \cite{taylor2006}}
 
-\section{SOLR}
-\label{sec:SOLR}
-SOLR ist von Crossload verwendete Such Engine, die als Web Schnittstelle dient, um auf einer Datenmenge Suchanfragen mit Apache \gls{lucene} auszuwerten.\footnote{Siehe Apache SOLR \cite{solr2022}}
+\clearpage
+\section{Apache Solr}
+\label{sec:Solr}
+Solr ist von Crossload verwendete Such Engine, die als Web Schnittstelle dient, um auf einer Datenmenge Suchanfragen mit Apache \gls{lucene} auszuwerten.\footnote{Siehe Apache Solr \cite{solr2022}}
 
 Apache Lucene, oder auch kurz Lucene genannt, ist eine mächtige Suchbibliothek, die plattformunabhängig von verschiedenen bekannten Apps, wie z. B. Netflix eingesetzt wird.
-Lucene nutzt für die Indizierung zu durchsuchender Dokumente Textfelder, wie z. B. „title“ für den Titel eines Dokumentes, um sowohl den Inhalt als Volltext, als auch die Attribute durchsuchen zu können. \footnote{Siehe Apache Lucene \cite{lucene2022}}
+Sie nutzt für die Indizierung zu durchsuchender Dokumente Textfelder, wie z. B. „title“ für den Titel eines Dokumentes, um sowohl den Inhalt als Volltext, als auch die Attribute durchsuchen zu können. \footnote{Siehe Apache Lucene \cite{lucene2022}}
+Lucene stellt dabei folgende Funktionen bereit:\footnote{Vgl. Schindler, Bräuer, Diepenbroek, S.4 \cite{schindler2007}}
+\begin{itemize}
+  \item \textbf{Sortierte Suche:} die besten Ergebnisse werden zuerst bezeigt
+  \item \textbf{Leistungsstarke Queries:} Phrasenabfragen, Platzhalterabfragen („wildcards“), Abfragen zur Nähe bzw. Ähnlichkeit eines Suchergebnisses („promixmity search“), exakte Phrasenabfragen, Bereichsabfragen für Datum/Uhrzeit und Zahlen
+  \item \textbf{Feldbasierte Suche:} Alle oder bestimmte Felder durchsuchen
+  \item \textbf{Boolesche Operatoren:} Beliebige Kombinationen zwischen Suchbegriffen (AND, OR,
+  NOT) um einzelne Abfragen zu kombinieren.
+  \item \textbf{Sortieren nach einem beliebigen Feld}
+\end{itemize}
 
-SOLR benutzt hier die Indexing Funktionen von Lucene, um in Echtzeit alle verfügbaren Dokumente zu indizieren, um bei einer Suche nur den Index durchsuchen zu müssen.
+Solr benutzt hier die Indexing Funktionen von Lucene, um in Echtzeit alle verfügbaren Dokumente zu indizieren, um bei einer Suche nur den Index durchsuchen zu müssen.
 Mit Apache Zookeeper wird dann eine \gls{api} zur Verfügung gestellt, welche Synchronisierung, Namensregister und die Verteilung der Konfiguration bereitstellt.
 Inhalte werden anhand von Boostingmechanismen höher oder schlechter bewertet.
-Als Entwickler gibt man hierfür mögliche Textfelder an, auf denen SOLR automatisch ein Textmatching anwendet (\ref{sub:relevanceText}).
-Ebenso ist es möglich eigene Boostingmechanismen zu erstellen, wobei hier dann in Java entwickelt wird.\footnote{Siehe Apache SOLR \cite{solr2022}}
+Als Entwickler gibt man hierfür mögliche Textfelder an, auf denen Solr automatisch ein Textmatching anwendet.\footnote{Vgl. \ref{sub:relevanceText}}
+Die wichtigsten Features von Solr sind:\footnote{Siehe Apache Solr \cite{solr2022}}
+\begin{itemize}
+  \item Volltextsuche
+  \item Facettensuche (generierte Attribute)
+  \item Suchvorschläge und Autokorrektur
+  \item Echtzeit Indizierung des Suchergebnisindizes
+  \item Arbeiten mit Word und PDF Dokumenten
+  \item Erstellung eigener Boostingmechanismen (z. B. mit Java)
+\end{itemize}
 
+
+\clearpage
 \section{Crossload}
 \label{sec:crossload}
-Crossload ist eine deusche Predigtdatenbank, deren Ziel es ist, mit modernen Technologien und einem ansprechendem User Interface (\gls{ui}) den Zugang zu Predigten und anderem christlichen Material zu vereinfachen.
+Crossload ist eine deutsche Predigtdatenbank, deren Ziel es ist, mit modernen Technologien und einem ansprechendem User Interface (\gls{ui}) den Zugang zu Predigten und anderem christlichen Material zu vereinfachen.
 Hierzu werden teils Predigten aus anderen System importiert, teils Autoren angefragt, welche dann regelmäßig ihre eigenen Predigten selbstständig hochladen.
 Dadurch sind sowohl ältere Predigten, etwa von Martin Luther, als auch Predigten zu aktuellen Themen und Weltgeschehen verfügbar.
 Zudem gibt es Schnittstellen zu christlichen Verlagen oder Webseiten wie CLV\footnote{Siehe CLV \cite{clv2022}} oder Evangelium 21\footnote{Siehe Evangelium 21 \cite{evangelium21e.v.2022}}.\footnote{Vgl. Pfleiderer, Crossload \cite{pfleiderer2022}}
@@ -107,7 +129,7 @@ Auf Crossload gibt es derzeit Predigten mit und ohne Video, Bücher, Bilder, Mus
 Technisch ist Crossload wie folgt aufgestellt:
 \begin{itemize}
   \item \textbf{Frontend:} UI entwickelt mit Angular zum Durchsuchen der Datenbank und direktem Streaming der Predigten. Für die Analyse und Statistiken wird Matomo verwendet. Dieser Dienst verfolgt besuchte Seiten, angehörte Inhalte und abgegebene Suchanfragen. Das Open-Source Pendant zu Google Analytics enthält auch Statistiken zur durchschnittlichen Dauer eines Besuches.\footnote{Siehe Matomo \cite{matomo2022}}
-  \item \textbf{Suche:} Eine auf SOLR basierte REST API mit allen veröffentlichten Inhalten und anderen Metadaten. Sie wird benutzt, um Last vom redaktionellen Backend zu nehmen.
+  \item \textbf{Backend/Suche:} Eine auf Solr basierte REST API mit allen veröffentlichten Inhalten und anderen Metadaten. Sie wird verwendet, um performante Suchanfragen des Frontends bearbeiten zu können und relevante Ergebnisse zu liefen.
   \item \textbf{Redaktion:} Aufbereitung und Anlegen von Inhalten verschiedenster Kategorien und anderer Metadaten.
   \begin{itemize}
     \item \textbf{Angular UI}: Redaktionelles Backend zum Pflegen aller Daten von Crossload.
