@@ -9,7 +9,7 @@ Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag, besch
 \section{Gemischte Ergebnisliste}
 \label{sec:devUnifiedList}
 
-Für die Entwicklung der zusammengeführten Liste im Crossload Frontend ist wichtig, dass die schon implementierte Funktionalität der Suche nach Kategorien nach der Entwicklung immer noch möglich sein muss.
+Für die Entwicklung der gemischten Ergebnisliste im Crossload Frontend ist wichtig, dass die schon implementierte Funktionalität der Suche nach Kategorien nach der Entwicklung immer noch möglich sein muss.
 Dazu finden sich auf der Suchergebnisseite mehrere Tabs, bei denen auch eine Suche innerhalb von Kategorien möglich ist.
 Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen.\footnote{Siehe \ref{fig:crossloadSuche}}
 
@@ -22,8 +22,6 @@ Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan d
 \end{figure}
 
 Ziel ist es, die gemischte Suchleiste so zu ändern, dass eine große Liste mit allen Kategorien gemischt angezeigt wird.
-Dazu wird die bisherige Implementation wie folgt geändert:
-
 Anstatt nach Ergebnissen pro Kategorie abzufragen und diese in den einzelnen Sektionen darzustellen, muss eine gesammelte Anfrage an die Such API gesendet werden.
 Diese wird nach dem gegebenen Sortierkriterium, in diesem Fall absteigend nach Relevanzscore sortiert von der Such API zurückgegeben.
 Dafür wird zu den vorhandenen Kategorien eine „gemischte“ Kategorie hinzugefügt, bei welcher dann kein Suchfilter mitgegeben wird.
@@ -51,7 +49,7 @@ Mithilfe der Symbole, die bereits bei den Ergebnissen die Kategorie bereits kenn
 \section{Zuordnung des Suchbegriffes zu einer Kategorie}
 \label{sec:devKeywords}
 
-Für den Zuordnung des Suchbegriffes zu einer Kategorie, werden die Synonyme in Java konfiguriert.
+Für die Zuordnung des Suchbegriffes zu einer Kategorie werden die Synonyme in Java konfiguriert.
 Dazu wird eine Enumeration erstellt, die eine Liste der Synonyme enthält.\footnote{Siehe \ref{code:SermonCategory}}
 Durch diese Enumeration können Änderungen leicht eingebaut werden und durch die vorhandene \gls{ci}/\gls{cd} Pipeline direkt in die produktive Umgebung eingespielt werden.
 Somit wäre der Nachteil der fest definierten Synonyme ausgeglichen, da Korrekturen schnell eingespielt werden können.
