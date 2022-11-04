@@ -4,35 +4,6 @@ Bevor mit der Entwicklung des Prototyps gestartet werden kann, geht die Planung 
 Der Entwurf einer Software ist die Basis für jede Softwareentwicklung und sollte vor der Implementierung erfolgen.
 Anfangs wird die momentane Anwendung auf bereits implementierte Funktionalität überprüft und schließlich mithilfe der erarbeiteten Methoden zur Bewertung der Relevanz auf Grundlage der gesammelten Anforderungen verbessert.
 
-\section{Bereits implementierte Funktionalität}
-\label{sec:implementedFunctionality}
-Bei \gls{crossload} werden verschiedene Typen bzw. Kategorien von Inhalten in der von Solr indizierten Datenbank über eine Spring Boot Anwendung an das Webfrontend zur Verfügung gestellt.
-Der initiale und derzeit implementierte Gedanke dabei ist, die Inhalte auch in diesen Kategorien zu übertragen und in fester Reihenfolge anzuzeigen.
-Diese Vorgehensweise hat jedoch einige Nachteile:
-
-\begin{itemize}
-  \item \textbf{Relevanz:} Der möglicherweise relevanteste Inhalt wird nicht als Erstes angezeigt, da dessen Kategorie relativ weit unten angezeigt wird.
-  \item \textbf{Übersicht:} Es ist schwer für den Nutzer eine Übersicht über alle gefundenen Inhalte zu erlangen.
-  \item \textbf{User Experience:} Höchstwahrscheinliche Treffer (90-100 \% Trefferwahrscheinlichkeit) werden nicht direkt vorgeschlagen.
-  Ein Treffer ist hierbei sehr wahrscheinlich relevant, wenn er ein Treffer mit einem sehr hohen errechneten Relevanzscore ist.\footnote{Siehe \ref{sec:userStories}}
-\end{itemize}
-
-Diese Nachteile sollen im Verlaufe der Entwicklung verbessert werden.
-Ebenso sollen auch die bisher genutzten Methoden zur Berechnung der Relevanz verbessert werden.
-Diese umfassen derzeit:
-
-\begin{itemize}
-  \item Text Matching auf verschiedene Textteile und Attribute. Hier werden verschiedene Attribute in 3 Kategorien (hoch, mittel, niedrig) wie folgend bewertet:
-  \begin{itemize}
-    \item \textbf{Hoch:} Titel, Serie, Thema, Autor
-    \item \textbf{Mittel:} Untertitel, Schlagwörter, Kategorie, Thema
-    \item \textbf{Niedrig:} Verlag, Standort, Dateiname, Speech to Text, Mitschrift, Suchsnippet
-  \end{itemize}
-  \item Matching des Suchterms zu einem Bibelvers.
-  \item Falls kein Suchterm gegeben ist, werden Inhalte mit Video oder Bild höher bewertet.
-  \item Filter für mitgegebene Query Parameter: Kategorie, Serie, Event, Thema, Jahreszahl oder Dauer. Inhalte, die nicht zu diesem Filter passen, werden komplett aussortiert.
-\end{itemize}
-
 \section{Verbesserungen für relevantere Inhalte}
 \label{sec:potential}
 
@@ -56,7 +27,7 @@ Eine Möglichkeit, die Relevanz der Suchergebnisse im Sinne der Aufgabenstellung
 Dafür müssten relevante Schlagwörter ermittelt werden und auch in allen möglichen Varianten untersucht werden, um ein hilfreiches Matching zu erhalten, welches dann anhand dem Attribut „Hauptkategorie“ nachvollzogen werden kann.
 Eine gewisse Menge an Varianten kann vordefiniert werden, um einen Großteil der Anfragen korrekt abzufangen.
 Um letztendlich aber eine mehr und mehr vollständige Menge an Varianten und Suchbegriffen zu erhalten müssen die abgegebenen Suchabfragen untersucht werden.
-Diese können aber mit Matomo untersucht werden und mit der Zeit angepasst werden.\footnote{Siehe \ref{sec:crossload} \cite{matomo2022}}
+Diese können aber mit \gls{matomo} untersucht werden und mit der Zeit angepasst werden.\footnote{Siehe \ref{sec:crossload} \cite{matomo2022}}
 
 Für den Start wären folgende Schlagwörter für die vorhandenen Kategorien denkbar:\footnote{Siehe Duden \cite{dudensynonyme2022}}
 \begin{itemize}
@@ -74,10 +45,27 @@ Für den Start wären folgende Schlagwörter für die vorhandenen Kategorien den
 Optimalerweise gibt der Nutzer eine Suchanfrage ein, zu der ein Inhalt eine sehr hohe Relevanz hat und alle anderen Inhalte eine recht niedrige.
 Sollte dies der Fall sein, so könnte dieser Inhalt in einer Vorschlagsbox über der Ergebnisliste angezeigt werden, damit der Nutzer visuell sieht, dass dies der Inhalt ist, den er höchstwahrscheinlich sucht.
 Eine Berechnung hierfür ist nicht klar definiert, als ersten Versuch wird überprüft, ob der berechnete Score des relevantesten Inhalts mindestens doppelt so groß ist, wie der des nächsten Inhalts.
-Dieses Vorgehen muss aber in der Entwicklung und im produktiven Betrieb weiter geprüft werden, um es weiter zu verfeinern.
+Dieses Vorgehen, die Annahme, dass relevante Inhalte mindestens den doppelten Relevanzscore haben um vorgeschlagen zu werden, muss aber in der Entwicklung und im produktiven Betrieb weiter geprüft und verfeinert werden.
 
 Eine mögliche Schwachstelle hierbei könnten sehr relevante Inhalte direkt am Anfang sein, bei denen die darauffolgenden Inhalte im Vergleich irrelevant sind.
 Somit könnten auch beide Inhalte vorgeschlagen werden, was aber aus Gründen der Nutzerfreundlichkeit nur auf Einen minimiert wird.
 Dafür müsste die ganze Liste oder ein Teil, z. B. die Top 10, auf die durchschnittliche Relevanz geprüft werden und Inhalte, die sich stark (ebenfalls doppelt so groß) nach oben von diesem Durchschnitt unterscheiden, als Vorschläge genommen werden.
 
-Für die Implementierung wird hierbei zuerst geprüft, ob ein Inhalt vorgeschlagen werden kann. Falls dies nicht zutrifft, wird anschließend mit der Prüfung des Durchschnitts fortgefahren.
+Beispielsweise könnte eine Liste mit den folgenden Scores vorliegen:
+
+\begin{itemize}
+  \item \textbf{Treffer 1:} Score 92.
+  \item \textbf{Treffer 2:} Score 91.
+  \item \textbf{Treffer 3:} Score <= 10.
+  \item \textbf{Treffer 4:} Score <= 10.
+  \item \textbf{Treffer 6:} Score <= 10.
+  \item \textbf{Treffer 5:} Score <= 10.
+  \item \textbf{Treffer 7:} Score <= 10.
+  \item \textbf{Treffer 8:} Score <= 10.
+  \item \textbf{Treffer 9:} Score <= 10.
+\end{itemize}
+
+Wenn nur Treffer 1 und 2 verglichen werden, könnte man zu dem Schluss kommen, dass keiner der gefundenen Inhalte vorgeschlagen wird, da der Score von Treffer 1 nicht doppelt so groß ist, wie der von Treffer 2.
+Doch wenn man sich den Durchschnittswert der restlichen Inhalte anschaut und der Score von Treffer 1 mindestens doppelt so groß ist, wie dieser Durchschnittswert, wird Treffer 1 als Vorschlag angezeigt.
+
+Für die Implementierung wird hierbei zuerst geprüft, ob ein Inhalt auf Basis seiner direkten Nachfolger vorgeschlagen werden kann. Falls dies nicht zutrifft, wird anschließend mit der Prüfung des Durchschnitts fortgefahren.

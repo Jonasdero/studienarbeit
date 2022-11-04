@@ -27,7 +27,9 @@ Diese wird nach dem gegebenen Sortierkriterium, in diesem Fall absteigend nach R
 Dafür wird zu den vorhandenen Kategorien eine „gemischte“ Kategorie hinzugefügt, bei welcher dann kein Suchfilter mitgegeben wird.
 Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön dargestellt zu bekommen.
 
+\clearpage
 \begin{lstlisting}[language=Java, title={Erstellen der gemischten Kategorie \cite{frontend2022}}]
+  // Create a new category for the unified list
   export const MIXED_RESULTS_OPTION = {
     category: "mixed",
     path: RESULTS_BASE_URL + "/gemischt",
@@ -38,6 +40,7 @@ Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön
 \end{lstlisting}
 
 \begin{lstlisting}[language=Java, title={Löschen der Kategorie aus den API Parametern \cite{frontend2022}}]
+  // Remove category from params
   if (category === "mixed") {
     delete url.category
   }
@@ -68,11 +71,12 @@ Diese machen den Source Code lesbarer und kleiner, da viele Kontrollstrukturen w
 Mithilfe der vorhandenen Klasse CrossloadCriteriaBuilder werden alle Inhalte der gefundenen Kategorie geboostet.
 Für Predigten wird hierbei noch für den Spezialfall der Predigt mit Video unterschieden, bei nur Predigten mit Video geboostet werden und andere Predigten keine besondere Behandlung erfahren.
 
-\clearpage
 \begin{lstlisting}[language=Java, title={Code für Überprüfung und Boosten der Kategorien. \cite{solr-search2022}}]
   private void addCategoryBoost(String searchTerm, SolrQuery query) {
+    // Check if search term is a sermon category
     SermonCategory.getAllCategories()
       .stream()
+      // Check if search term contains a category
       .filter(category -> category.hasCategory(searchTerm))
       .forEach(category ->  {
         CrossloadCriteriaBuilder instance = CrossloadCriteriaBuilder.getInstance();
@@ -84,6 +88,7 @@ Für Predigten wird hierbei noch für den Spezialfall der Predigt mit Video unte
           // Boost of found category
           instance.addCriteria(SchemaField.MAIN_CAT, category.getId(), 75);
         }
+        // Add boost to query
         query.addCriteria(instance);
       });
   }
@@ -106,13 +111,16 @@ Dieser wäre von Seite pro Seite unterschiedlich.
 
 Mit Solr ist es allerdings möglich, eine Query mit einem Ergebnis und den gleichen Suchparametern abzugeben, die nur die ersten 10 Elemente einer nach dem Relevanzscore absteigend sortierten Liste zurückgibt.
 
-\clearpage
 \begin{lstlisting}[language=Java, label={code:SOLRSuggestionQuery}, title={Solr Query für die Top 10 Ergebnisse, absteigend sortiert nach Relevanz \cite{solr-search2022}}]
   final JsonQueryRequest suggestionQuery = new JsonQueryRequest(params)
+    // Set query
     .withParam("q", solrQuery.getQuery())
+    // Set filter queries
     .withParam("fl", "*, [child limit=100]")
+    // Get top 10 results
     .withParam("rows", 10) // Get only 10 values
     .withParam("start", 0) // Start at the beginning, always
+    // Sort by relevance score
     .withParam("sort", "score desc,main_id desc");
 \end{lstlisting}
 
@@ -126,18 +134,21 @@ Diese gefundenen Ergebnisse werden dann untersucht, um einen Vorschlag zu finden
     // Case 1: Score of the first element is at least twice as much of the second score
     boolean biggerThanDoubleTheScore = mostRelevant.size() >= 2 && mostRelevant.get(0).getScore() >= 2 * mostRelevant.get(1).getScore();
 
+    // return the first element if one of the cases is true
     if(onlyOneElement || biggerThanDoubleTheScore) {
       return mostRelevant.get(0);
     }
 
     // Case 2: Get the average of the most relevant sermons and check if the first has at least twice as much of that
     if(!mostRelevant.isEmpty()) {
+      // Get average of the most relevant sermons
       Float average = (float) mostRelevant
         .stream()
         .mapToDouble(sermon -> sermon.getScore())
         .summaryStatistics()
         .getAverage();
 
+      // return the first element if the first element has at least twice as much of the average
       if(mostRelevant.get(0).getScore() >= 2 * average) {
         return mostRelevant.get(0);
       }
@@ -163,7 +174,8 @@ Für die Anzeige wird dann die bereits verfügbare Liste der gefundenen Inhalte 
 
 
 \begin{lstlisting}[language=Java, label={code:suggestionRow}, title={Code für Anzeige des Vorschlage \cite{frontend2022}}]
-  <div role="rowgroup" attr.data-cy="category_suggestion" *ngIf="response.suggestion>
+  // If there is a suggestion, show it
+  <div role="rowgroup" attr.data-cy="category_suggestion" *ngIf="response.suggestion">
     <app-content-list-header text="Vorschlag"></app-content-list-header>
 
     <app-content-list

@@ -25,15 +25,17 @@ Die Priorität der einzelnen User Stories ergibt sich aus der unten gegebenen Re
 
 \pagebreak
 Ich, als Benutzer, will …
-\begin{itemize}
-  \item[…] für ein gegebenes Suchkriterium relevante Suchergebnisse über mehrere Kategorien hinweg erhalten, damit mit einer einzelnen Suche nur eine geringe Teilmenge der Datenbank angezeigt wird.
-  \item[…] die erhaltenen Suchbegriffe nach Kontext und Wahrscheinlichkeit gewichtet erhalten, damit diese im späteren Verlauf sortiert werden können. Der Kontext ergibt sich aus möglichen Schlagworten, die im Suchbegriff verwendet worden, womit z. B. eine Kategorie, ein Attribut eines Ergebnisses oder höher gewertet wird. Beispiele wären:
-    \begin{itemize}
-      \item[…] der Titel eines Buches wird „relativ“ genau als Suchbegriff eingegeben, folglich wird dieses Buch stärker gewichtet.
-      \item[…] der Suchbegriff enthält den Term „Video“, folglich werden alle Videos priorisiert.
-    \end{itemize}
-  \item[…] die erhaltenen Suchbegriffe anhand des errechneten Gewichts absteigend sortiert zurückgegeben bekommen, damit das relevanteste Suchergebnis auf der Suchergebnisseite ganz oben steht.
-  \item[…] ein mit hoher Wahrscheinlichkeit gesuchtes Suchergebnis als Vorschlag angezeigt bekommen, damit auf der Suchergebnisseite eine schnelle Navigation zu diesem Ergebnis möglich ist.
+\begin{enumerate}
+  \item … für ein gegebenes Suchkriterium relevante Suchergebnisse über mehrere Kategorien hinweg erhalten, damit mit einer einzelnen Suche nur eine geringe Teilmenge der Datenbank angezeigt wird.
+  \item … die erhaltenen Suchbegriffe nach Kontext und Wahrscheinlichkeit gewichtet erhalten, damit diese im späteren Verlauf sortiert werden können. Der Kontext ergibt sich aus möglichen Schlagworten, die im Suchbegriff verwendet worden, womit z. B. eine Kategorie, ein Attribut eines Ergebnisses oder höher gewertet wird. Beispiele wären:
+    \begin{enumerate}
+      \item … der Titel eines Buches wird „relativ“ genau als Suchbegriff eingegeben, folglich wird dieses Buch stärker gewichtet.
+      \item … der Suchbegriff enthält den Term „Video“, folglich werden alle Videos priorisiert.
+    \end{enumerate}
+  \item … die erhaltenen Suchbegriffe anhand des errechneten Gewichts absteigend sortiert zurückgegeben bekommen, damit das relevanteste Suchergebnis auf der Suchergebnisseite ganz oben steht.
+  \item … ein ideales Suchergebnis als grafisch hervorgehobenen Vorschlag angezeigt bekommen, damit auf der Suchergebnisseite eine schnelle Navigation zu diesem Ergebnis möglich ist.
     Dabei soll ein Inhalt nur vorgeschlagen werden, wenn dessen Relevanz um einiges höher ist, als das der anderen gefundenen Ergebnisse.
-    Dies verhindert, dass von ähnlich relevanten Suchergebnissen eines ohne Berechtigung hervorgehoben wird, auch wenn es das Relevanteste in dieser Liste ist.
-\end{itemize}
+    Dies verhindert, dass von ähnlich relevanten Suchergebnissen eines ohne Berechtigung hervorgehoben wird, auch wenn es das Relevanteste in dieser Liste ist. \footnote{Siehe \ref{fig:tomate}}
+\end{enumerate}
+
+Die User Stories 2.a und 3 sind in der Anwendung bereits vorhanden und sind in der aufgeführten Liste nur zur besseren Übersichtlichkeit aufgeführt. Sie sollen nach der Entwicklung der neuen \gls{api} gleich bleiben und nicht verändert werden.
