@@ -188,6 +188,7 @@ Diese Inhalte werden anhand von eingegebenen Suchbegriffen, aktuellen Ereignisse
 
 Falls der Nutzer keine Suchanfrage eingegeben hat, werden die neuesten bzw. die aktuell relevantesten Inhalte angezeigt.
 Diese Suche kann direkt über die Startseite erreicht werden, wenn man auf den Suchknopf (eine Lupe) klickt.
+Sollte der Nutzer in das Suchfeld etwas eingegeben haben, wird die Suche direkt nach dem Klick auf die Lupe gestartet und er erhält Ergebnisse abhängig von seiner Eingabe.
 
 \begin{figure}[h]
   \begin{centering}
@@ -198,6 +199,10 @@ Diese Suche kann direkt über die Startseite erreicht werden, wenn man auf den S
 \end{figure}
 
 Der initiale und derzeit implementierte Gedanke ist, die Inhalte auch in diesen Kategorien zu übertragen und in fester Reihenfolge anzuzeigen.
+Diese Suchergebnisseite enthält pro Kategorie 5 Inhalte und einen Link, um alle Ergebnisse dieser Kategorie anzuzeigen.
+Dadurch konnte bisher dem Nutzer ein schneller Einblick in die Inhalte gegeben werden, ohne dass er sich durch viele Ergebnisse klicken muss.
+Die Kategorien sind hierbei nach der erwarteten Häufigkeit sortiert, in welcher die Entwicklung das Verhalten des Nutzers erwartet.
+
 Diese Vorgehensweise hat jedoch einige Nachteile:
 
 \begin{itemize}
