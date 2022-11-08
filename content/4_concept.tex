@@ -4,23 +4,20 @@ Bevor mit der Entwicklung des Prototyps gestartet werden kann, geht die Planung 
 Der Entwurf einer Software ist die Basis für jede Softwareentwicklung und sollte vor der Implementierung erfolgen.
 Anfangs wird die momentane Anwendung auf bereits implementierte Funktionalität überprüft und schließlich mithilfe der erarbeiteten Methoden zur Bewertung der Relevanz auf Grundlage der gesammelten Anforderungen verbessert.
 
-\section{Verbesserungen für relevantere Inhalte}
-\label{sec:potential}
-
 Grundsätzlich findet die Anwendung bereits passende bzw. relevante Inhalte durch das Matching der verschiedenen Attribute\footnote{Siehe \ref{sub:relevanceAttribute}} und Textteile.\footnote{Siehe \ref{sub:relevanceText}}
 Ebenso das Matching bezüglich des Bibelverses oder des initialen Boosting über ein vorhandenes Video oder Bild führt bereits zum gewünschten Ergebnis und eine Änderung würde hier keinen nennenswerten Mehrwert bieten.
 
 Dennoch gibt es einige Ideen, relevantere Inhalte für den Nutzer herauszugeben: gemischte Ergebnislisten, der Zuordnung des Suchbegriffes zu einer Kategorie auf die Kategorien und Vorschläge zur weiteren Navigation.
 
-\subsection{Gemischte Ergebnisliste}
+\section{Gemischte Ergebnisliste}
 \label{sub:unifiedList}
 Als oberstes Ziel wird die Liste der gefundenen Inhalte, momentan aufgespalten in die verschiedenen Kategorien wie z. B. Bild, Video, Predigt, Buch, etc., in eine große Liste überführt.
 Dadurch können relevante Inhalte, die bisher durch die vordefinierte Sortierung der Kategorien auf der Suchseite nicht als Erste aufgelistet wurden, an der Stelle angezeigt werden, an welcher der Nutzer sie erwartet.
 
-Damit der Nutzer dennoch die jeweilige Kategorie der Suchergebnisse sieht, wird anschließend zu der ausführlichen Version des Ergebnisses ein kleiner Text mit dessen Kategorie hinzugefügt.
+Damit der Nutzer dennoch die jeweilige Kategorie der Suchergebnisse sieht, wird anschließend zu der ausführlichen Version des Ergebnisses ein kleines Symbol mit dessen Kategorie hinzugefügt.
 So geht die bisherige Funktionalität nicht komplett verloren und der Nutzer erhält die relevantesten Inhalte direkt an erster Stelle und sieht sofort dessen Kategorie.
 
-\subsection{Zuordnung des Suchbegriffes zu einer Kategorie}
+\section{Zuordnung des Suchbegriffes zu einer Kategorie}
 \label{sub:keyword}
 Eine Möglichkeit, die Relevanz der Suchergebnisse im Sinne der Aufgabenstellung zu verbessern, wäre es, anhand des Suchbegriffes herauszufiltern, ob z. B. ein Schlagwort wie „Video“ oder „Bild“ verwendet wurde und somit Inhalte dieser Kategorie relevanter sind.
 
@@ -40,7 +37,7 @@ Für den Start wären folgende Schlagwörter für die vorhandenen Kategorien den
   \item \textbf{Sonstige:} Sonstige, andere.
 \end{itemize}
 
-\subsection{Vorschläge für weitere Navigation}
+\section{Vorschläge für weitere Navigation}
 \label{sub:suggestion}
 Optimalerweise gibt der Nutzer eine Suchanfrage ein, zu der ein Inhalt eine sehr hohe Relevanz hat und alle anderen Inhalte eine recht niedrige.
 Sollte dies der Fall sein, so könnte dieser Inhalt in einer Vorschlagsbox über der Ergebnisliste angezeigt werden, damit der Nutzer visuell sieht, dass dies der Inhalt ist, den er höchstwahrscheinlich sucht.

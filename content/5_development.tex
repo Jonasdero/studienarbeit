@@ -11,7 +11,7 @@ Zuletzt werden die resultierenden Inhalte nach einem möglichen Vorschlag, besch
 
 Für die Entwicklung der gemischten Ergebnisliste im Crossload Frontend ist wichtig, dass die schon implementierte Funktionalität der Suche nach Kategorien nach der Entwicklung immer noch möglich sein muss.
 Dazu finden sich auf der Suchergebnisseite mehrere Tabs, bei denen auch eine Suche innerhalb von Kategorien möglich ist.
-Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen.\footnote{Siehe \ref{fig:crossloadSuche}}
+Sie wird von der gemischten Suchergebnisseite angeführt, auf der wir momentan die Aufteilung in verschiedene Kategorien sehen.\footnote{Siehe Anhang \ref{fig:crossloadSuche}}
 
 \begin{figure}[h]
   \begin{centering}
@@ -29,7 +29,7 @@ Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön
 
 \clearpage
 \begin{lstlisting}[language=Java, title={Erstellen der gemischten Kategorie \cite{frontend2022}}]
-  // Create a new category for the unified list
+  // Create a new category for the unified / mixes list
   export const MIXED_RESULTS_OPTION = {
     category: "mixed",
     path: RESULTS_BASE_URL + "/gemischt",
@@ -40,13 +40,13 @@ Danach sind nur noch kleine Änderungen notwendig, um das für den Nutzer schön
 \end{lstlisting}
 
 \begin{lstlisting}[language=Java, title={Löschen der Kategorie aus den API Parametern \cite{frontend2022}}]
-  // Remove category from params
+  // Remove category from params, when search category is mixed
   if (category === "mixed") {
     delete url.category
   }
 \end{lstlisting}
 
-Das Ergebnis zeigt eine zusammengeführte Liste, die komplett nach Relevanz sortiert ist.\footnote{Siehe \ref{fig:crossloadSucheNeu}}
+Das Ergebnis zeigt eine zusammengeführte Liste, die komplett nach Relevanz sortiert ist.\footnote{Siehe Anhang \ref{fig:crossloadSucheNeu}}
 Mithilfe der Symbole, die bereits bei den Ergebnissen die Kategorie bereits kennzeichneten, kann der Nutzer einfach erkennen, welcher Inhalt von welcher Kategorie ist.
 
 \section{Zuordnung des Suchbegriffes zu einer Kategorie}
@@ -117,9 +117,10 @@ Mit Solr ist es allerdings möglich, eine Query mit einem Ergebnis und den gleic
     .withParam("q", solrQuery.getQuery())
     // Set filter queries
     .withParam("fl", "*, [child limit=100]")
-    // Get top 10 results
-    .withParam("rows", 10) // Get only 10 values
-    .withParam("start", 0) // Start at the beginning, always
+    // Get only 10 values
+    .withParam("rows", 10)
+    // Start at the beginning, always
+    .withParam("start", 0)
     // Sort by relevance score
     .withParam("sort", "score desc,main_id desc");
 \end{lstlisting}
