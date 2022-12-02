@@ -1,6 +1,6 @@
 # Studienarbeit
 
-Studienarbeit im Rahmen des berufsbegleiteten Masters an der OHM Professional School (TH OHM) bei Prof. Dr. Hans-Georg Hopf.
+Studienarbeit im Rahmen des berufsbegleitenden Masters an der OHM Professional School (TH OHM) bei Prof. Dr. Hans-Georg Hopf.
 
 ## Kurzdarstellung
 Das Ziel der vorliegenden Studienarbeit ist es, eine bestehende Datenbank mit multimedialen Inhalten möglichst effizient nach unterschiedlichen Kriterien zu durchsuchen.
